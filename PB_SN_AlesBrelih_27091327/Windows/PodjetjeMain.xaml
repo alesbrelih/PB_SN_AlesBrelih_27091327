@@ -1,0 +1,117 @@
+﻿<Window x:Class="PB_SN_AlesBrelih_27091327.Windows.PodjetjeMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PodjetjeMain" Height="654.167" Width="502.778"
+        WindowStyle="None" ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True" MouseDown="PodjetjeMain_OnMouseDown">
+    <Window.Resources>
+        <ResourceDictionary Source="../Resources/Dictionaries/MainLayout.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Label Name="LblPodjetjeMain" Content="Pregled Podjetij" Style="{DynamicResource LabelH1Style}" HorizontalAlignment="Left"/>
+            <WrapPanel FlowDirection="RightToLeft" VerticalAlignment="Center">
+                <Button Name="BtnClose" Click="BtnClose_OnClick" Style="{DynamicResource WindowStateClose}"/>
+                <Button Name="BtnMinimize" Click="BtnMinimize_OnClick" Style="{DynamicResource WindowStateMinimize}"/>
+            </WrapPanel>
+        </Grid>
+        <Grid Row="1" Background="Red"></Grid>
+
+        <Grid Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                <GroupBox Header="Podjetje">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Name="LblIzborPodjetja" Content="Podjetje" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                        <ComboBox Grid.Column="1" Name="CBoxIzborPodjetja"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <Grid Row="1">
+                <GroupBox Header="Podatki o podjetju">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Name="LblImePodjetja" Style="{DynamicResource LabelManageOsebaInfo}" Content="Ime Podjetja"/>
+                        <Label Grid.Row="0" Grid.Column="1" Name="LblImePodjetjaVnos" Content="Neki"/>
+
+                        <Grid Row="1" ColumnSpan="2">
+                            <GroupBox Header="Kontaktna Oseba">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="0.5*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="LblImeKontaktne" Content="Ime" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Name="LblImeKontaktnaVnos" Content="Neki"/>
+                                    
+                                    <Label Grid.Row="1" Grid.Column="0" Name="LblPriimekKontaktne" Content="Priimek" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekKontaktneVnos" Content="Neki"/>
+                                    
+                                    <Label Grid.Row="2" Grid.Column="0" Name="LblEmailKontaktne" Content="E-mail" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Name="LblEmailKontaktneVnos" Content="Neki"/>
+                                    
+                                    <Label Grid.Row="3" Grid.Column="0" Name="LblTelefonKontaktne" Content="Telefon" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                                    <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonKontaktneVnos" Content="Neki"/>
+                                    
+                                    <Button Grid.Row="5" Grid.Column="0" Name="BtnUrediOsebo" Background="Gray"/>
+                                    
+                                </Grid>
+                            </GroupBox>
+                            
+                        </Grid>
+                        <Grid Row="2" ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="BtnUrediPodjetje" Content="Uredi"/>
+                            <Button Grid.Column="1" Name="BtnIzbrisiPodjetje" Content="Izbrisi"/>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <Grid Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="BtnOk" Content="OK"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Row="3">
+            <StatusBar></StatusBar>
+        </Grid>
+    </Grid>
+</Window>

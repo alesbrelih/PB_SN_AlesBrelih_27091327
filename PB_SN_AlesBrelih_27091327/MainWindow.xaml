@@ -1,0 +1,68 @@
+﻿<Window x:Class="PB_SN_AlesBrelih_27091327.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        WindowStyle="None"  MouseDown="MainWindow_OnMouseDown" AllowsTransparency="true"
+        BorderThickness="2" BorderBrush="Black">
+    <Window.Resources>
+        <ResourceDictionary Source="Resources/Dictionaries/MainLayout.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Name="lblMainWindowTopBar" Style="{DynamicResource LabelH1Style}" Content="PB_SN"></Label>
+            <WrapPanel FlowDirection="RightToLeft" VerticalAlignment="Center">
+                <Button Name="ExitButton" Style="{DynamicResource WindowStateClose}" Click="ExitButton_OnClick"/>
+                <Button Name="MinimizeButton" Style="{DynamicResource WindowStateMinimize}" Click="MinimizeButton_OnClick"></Button>
+            </WrapPanel>
+        </Grid>
+        <Menu Grid.Row="1">
+            
+            <MenuItem Header="_Datoteka">
+                <MenuItem Header="_Export"/>
+                <Separator Background="White"/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Podjetja">
+                <MenuItem Header="_Pregled" Name="PregledPodjetjaMenuItem" Click="PregledPodjetjaMenuItem_OnClick"/>
+                <Separator Background="White"/>
+
+                <MenuItem Header="Dodaj _Novo" Name="NovoPodjetjeMenuitem" Click="NovoPodjetjeMenuitem_OnClick"/>
+                <MenuItem Header="_Uredi"/>
+                <MenuItem Header="_Izbrisi"/>
+            </MenuItem>
+            <MenuItem Header="_Osebe">
+                <MenuItem Header="_Pregled" Name="PregledOsebaMenuItem" Click="PregledOsebaMenuItem_OnClick"/>
+                <Separator Background="White"/>
+
+                <MenuItem Header="Dodaj _Novo" Name="NovaOsebaMenuItem" Click="NovaOsebaMenuItem_OnClick"/>
+                <MenuItem Header="_Uredi"/>
+                <MenuItem Header="_Izbrisi"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="2">
+            <GroupBox Header="Bussiness Overview">
+                <DataGrid Name="DataGridMain" ItemsSource="{Binding VsiNajemi, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ImePodjetja}" Header="Ime Podjetja" />
+                        <DataGridTextColumn Binding="{Binding KontaktnaOseba}" Header="Kontaktna Oseba" />
+
+                        <DataGridTextColumn Binding="{Binding ImeProstora}" Header="Poslovni Prostor" />
+                        <DataGridTextColumn Binding="{Binding ZacetekNajema}" Header="Od:" />
+                        <DataGridTextColumn Binding="{Binding KonecNajema}" Header="Do:" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="3">
+            <StatusBar Name="StatusBarMainWindow"/>
+        </Grid>
+    </Grid>
+</Window>

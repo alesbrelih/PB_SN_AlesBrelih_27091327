@@ -1,0 +1,62 @@
+﻿<Window x:Class="PB_SN_AlesBrelih_27091327.Windows.OsebaManage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OsebaManage" Height="333.472" Width="372.223"
+        WindowStyle="None" AllowsTransparency="True"
+        MouseDown="OsebaManage_OnMouseDown"
+        ResizeMode="CanResizeWithGrip">
+    <Window.Resources>
+        <ResourceDictionary Source="../Resources/Dictionaries/MainLayout.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Name="ManageOsebaLabel" Style="{DynamicResource LabelH1Style}" Content="PB-SN-Oseba"/>
+            <WrapPanel FlowDirection="RightToLeft" VerticalAlignment="Center">
+                <Button Name="BtnClose" Click="BtnClose_OnClick"  Style="{DynamicResource WindowStateClose}"/>
+                <Button Name="BtnMinimiye" Click="BtnMinimiye_OnClick" Style="{DynamicResource WindowStateMinimize}"/>
+            </WrapPanel>
+
+        </Grid>
+        <Grid Grid.Row="1" Background="Red">
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <GroupBox Header="Osebni Podatki">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="Ime"/>
+                    <Label Grid.Row="1" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="Priimek"/>
+                    <Label Grid.Row="2" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="E-mail"/>
+                    <Label Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="Telefon"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="TboxIme"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="TboxPriimek"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="TboxEmail"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="TboxTelefon"/>
+                    <Button Grid.Row="5" Grid.Column="0" Content="Save and Exit" Name="BtnOk"/>
+                    <Button Grid.Row="5" Grid.Column="1" Content="Exit" Name="BtnCancel"/>
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <StatusBar Grid.Row="3">
+
+        </StatusBar>
+    </Grid>
+</Window>
