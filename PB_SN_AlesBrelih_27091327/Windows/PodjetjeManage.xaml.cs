@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PB_SN_AlesBrelih_27091327.Resources.Data;
+using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
+using PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Windows
 {
@@ -19,10 +22,16 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     /// </summary>
     public partial class PodjetjeManage : Window
     {
-        public PodjetjeManage()
+        private ManagePodjetjeViewModel _viewModel;
+        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null)
         {
             InitializeComponent();
+            _viewModel = new ManagePodjetjeViewModel(Action,podjetje);
+            _viewModel.NastaviComboBox(CBoxKontaktnaOseba);
+            this.DataContext = _viewModel;
         }
+
+       
 
         private void PodjetjeManage_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -37,6 +46,19 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void BtnMinimize_OnClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SaveChanges();
+            this.DialogResult = true;
+            this.Close();
+
+        }
+
+        private void CBoxKontaktnaOseba_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _viewModel.SpremeniIzbranoKontaktno(int.Parse(CBoxKontaktnaOseba.SelectedValue.ToString()));
         }
     }
 }

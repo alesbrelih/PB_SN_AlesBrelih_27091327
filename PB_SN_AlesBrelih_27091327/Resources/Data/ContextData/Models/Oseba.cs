@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -7,6 +9,9 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models
 {
     public class Oseba
     {
+        private ViewModels.OsebaView Oseba1;
+
+        
 
         public int OsebaID { get; set; }
 
@@ -20,6 +25,17 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models
 
         public ICollection<Podjetje> VsaPodjetja { get; set; }
 
+        public Oseba()
+        {
+            
+        }
+        public Oseba(OsebaView osebaView)
+        {
+            Ime = osebaView.Ime;
+            Priimek = osebaView.Priimek;
+            Telefon = osebaView.Telephone;
+            Email = osebaView.EMail;
+        }
 
     }
 }

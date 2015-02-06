@@ -38,7 +38,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Name="LblOseba" Content="Oseba" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                    <ComboBox Grid.Column="1" Name="CBoxOsebe"></ComboBox>
+                    <ComboBox Grid.Column="1" Name="CBoxOsebe" ItemsSource="{Binding VseOsebe}" SelectionChanged="CBoxOsebe_SelectionChanged"/>
                 </Grid>
             </GroupBox>
             
@@ -60,16 +60,16 @@
                     <Label Grid.Row="1" Name="LblPriimek" Content="Priimek" Style="{DynamicResource LabelManageOsebaInfo}"/>
                     <Label Grid.Row="2" Name="LblEmail" Content="Email" Style="{DynamicResource LabelManageOsebaInfo}"/>
                     <Label Grid.Row="3" Name="LblTelefon" Content="Telefon" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                    <Button Grid.Row="5" Name="LblUredi" Content="Uredi" Background="Gray"/>
+                    <Button Grid.Row="5" Name="LblUredi" Content="Uredi" Background="Gray" Click="LblUredi_OnClick"/>
                     
                     <Grid Grid.Row="4" Background="Red"/>
                     <Grid Grid.Row="4" Grid.Column="1" Background="Red"></Grid>
                     
-                    <Label Grid.Row="0" Grid.Column="1" Name="LblImeVnos" Content="Neki"/>
-                    <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekVnos" Content="Neki"/>
-                    <Label Grid.Row="2" Grid.Column="1" Name="LblEmailVnos" Content="Neki"/>
-                    <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonVnos" Content="Neki"/>
-                    <Button Grid.Row="5" Grid.Column="1" Name="BtnIzbrisi" Content="Izbrisi" Background="Gray"/>
+                    <Label Grid.Row="0" Grid.Column="1" Name="LblImeVnos" Content="{Binding TrenutnoPrikazana.Ime}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekVnos" Content="{Binding TrenutnoPrikazana.Priimek}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Name="LblEmailVnos" Content="{Binding TrenutnoPrikazana.EMail}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonVnos" Content="{Binding TrenutnoPrikazana.Telephone}"/>
+                    <Button Grid.Row="5" Grid.Column="1" Name="BtnIzbrisi" Content="Izbrisi" Background="Gray" Click="BtnIzbrisi_OnClick"/>
                 </Grid>
             </GroupBox>
             <Grid Grid.Row="2">
@@ -77,7 +77,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="OK" Name="BtnOK"/>
+                <Button Content="OK" Name="BtnOK" Click="BtnOK_OnClick"/>
             </Grid>
         </Grid>
         <StatusBar Grid.Row="4"></StatusBar>

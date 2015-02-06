@@ -25,19 +25,19 @@
 
         <Grid Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <GroupBox Header="Podjetje">
-                    <Grid>
+                    <Grid Margin="0,-4,0,4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Label Name="LblIzborPodjetja" Content="Podjetje" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                        <ComboBox Grid.Column="1" Name="CBoxIzborPodjetja"/>
+                        <ComboBox Grid.Column="1" Name="CBoxIzborPodjetja" ItemsSource="{Binding VsaPodjetja}" SelectionChanged="CBoxIzborPodjetja_SelectionChanged"/>
                     </Grid>
                 </GroupBox>
             </Grid>
@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Label Name="LblImePodjetja" Style="{DynamicResource LabelManageOsebaInfo}" Content="Ime Podjetja"/>
-                        <Label Grid.Row="0" Grid.Column="1" Name="LblImePodjetjaVnos" Content="Neki"/>
+                        <Label Grid.Row="0" Grid.Column="1" Name="LblImePodjetjaVnos" Content="{Binding IzbranoPodjetje.ImePodjetja}"/>
 
                         <Grid Row="1" ColumnSpan="2">
                             <GroupBox Header="Kontaktna Oseba">
@@ -72,18 +72,18 @@
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Name="LblImeKontaktne" Content="Ime" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Name="LblImeKontaktnaVnos" Content="Neki"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Name="LblImeKontaktnaVnos" Content="{Binding IzbranoPodjetje.KontaktnaOseba.Ime}"/>
                                     
                                     <Label Grid.Row="1" Grid.Column="0" Name="LblPriimekKontaktne" Content="Priimek" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                    <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekKontaktneVnos" Content="Neki"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekKontaktneVnos" Content="{Binding IzbranoPodjetje.KontaktnaOseba.Priimek}"/>
                                     
                                     <Label Grid.Row="2" Grid.Column="0" Name="LblEmailKontaktne" Content="E-mail" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                    <Label Grid.Row="2" Grid.Column="1" Name="LblEmailKontaktneVnos" Content="Neki"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Name="LblEmailKontaktneVnos" Content="{Binding IzbranoPodjetje.KontaktnaOseba.EMail}"/>
                                     
                                     <Label Grid.Row="3" Grid.Column="0" Name="LblTelefonKontaktne" Content="Telefon" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                    <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonKontaktneVnos" Content="Neki"/>
+                                    <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonKontaktneVnos" Content="{Binding IzbranoPodjetje.KontaktnaOseba.Telephone}"/>
                                     
-                                    <Button Grid.Row="5" Grid.Column="0" Name="BtnUrediOsebo" Background="Gray"/>
+                                    <Button Grid.Row="5" Grid.Column="0" Name="BtnUrediOsebo" Background="Gray" Content="Uredi" Click="BtnUrediOsebo_OnClick"/>
                                     
                                 </Grid>
                             </GroupBox>
@@ -94,7 +94,7 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Name="BtnUrediPodjetje" Content="Uredi"/>
+                            <Button Name="BtnUrediPodjetje" Content="Uredi" Click="BtnUrediPodjetje_OnClick"/>
                             <Button Grid.Column="1" Name="BtnIzbrisiPodjetje" Content="Izbrisi"/>
                         </Grid>
                     </Grid>
@@ -105,7 +105,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="BtnOk" Content="OK"/>
+                <Button Name="BtnOk" Content="OK" Click="BtnOk_OnClick"/>
             </Grid>
 
         </Grid>

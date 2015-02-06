@@ -45,12 +45,12 @@
                     <Label Grid.Row="1" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="Priimek"/>
                     <Label Grid.Row="2" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="E-mail"/>
                     <Label Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelManageOsebaInfo}" Content="Telefon"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Name="TboxIme"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Name="TboxPriimek"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Name="TboxEmail"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Name="TboxTelefon"/>
-                    <Button Grid.Row="5" Grid.Column="0" Content="Save and Exit" Name="BtnOk"/>
-                    <Button Grid.Row="5" Grid.Column="1" Content="Exit" Name="BtnCancel"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="TboxIme" Text="{Binding Oseba.Ime, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="TboxPriimek" Text="{Binding Oseba.Priimek, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="TboxEmail" Text="{Binding Oseba.EMail, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="TboxTelefon" Text="{Binding Oseba.Telephone, Mode=TwoWay}"/>
+                    <Button Grid.Row="5" Grid.Column="0" Content="Save and Exit" Name="BtnOk" Click="BtnOk_Click"/>
+                    <Button Grid.Row="5" Grid.Column="1" Content="Exit" Name="BtnCancel" Click="BtnCancel_OnClick"/>
 
                 </Grid>
             </GroupBox>

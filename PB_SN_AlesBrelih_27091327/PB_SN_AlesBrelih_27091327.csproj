@@ -87,8 +87,26 @@
     <Compile Include="Resources\Data\ContextData\Models\PoslovniProstor.cs" />
     <Compile Include="Resources\Data\ContextData\PBDB.cs" />
     <Compile Include="Resources\Data\ContextData\ViewModels\NajemView.cs" />
+    <Compile Include="Resources\Data\ContextData\ViewModels\OsebaView.cs" />
+    <Compile Include="Resources\Data\ContextData\ViewModels\PodjetjeView.cs" />
+    <Compile Include="Resources\Data\CustomTypes.cs" />
+    <Compile Include="Resources\Data\Enums.cs" />
     <Compile Include="Resources\ManageDatabase\ManageNajemDB.cs" />
+    <Compile Include="Resources\ManageDatabase\ManageOsebaDB.cs" />
+    <Compile Include="Resources\ManageDatabase\ManagePodjetjeDB.cs" />
     <Compile Include="Resources\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Resources\ViewModels\MessageWindows\DialogWindowViewModel.cs" />
+    <Compile Include="Resources\ViewModels\MessageWindows\WarningWindowViewModel.cs" />
+    <Compile Include="Resources\ViewModels\OsebaWindows\MainOsebaViewModel.cs" />
+    <Compile Include="Resources\ViewModels\OsebaWindows\ManageOsebaViewModel.cs" />
+    <Compile Include="Resources\ViewModels\PodjetjeWindows\ManagePodjetjeViewModel.cs" />
+    <Compile Include="Resources\ViewModels\PodjetjeWindows\MainPodjetjeViewModel.cs" />
+    <Compile Include="Windows\MessageWindows\DialogWindows.xaml.cs">
+      <DependentUpon>DialogWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MessageWindows\WarningWindow.xaml.cs">
+      <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\OsebaMain.xaml.cs">
       <DependentUpon>OsebaMain.xaml</DependentUpon>
     </Compile>
@@ -114,6 +132,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Dictionaries\MainLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MessageWindows\DialogWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MessageWindows\WarningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

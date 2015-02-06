@@ -73,6 +73,12 @@ namespace PB_SN_AlesBrelih_27091327
             
         }
 
+        private void NovaOsebaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var novaOseba = new OsebaManage();
+            novaOseba.ShowDialog();
+        }
+
         
     }
 }

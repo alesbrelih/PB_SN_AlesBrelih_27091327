@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PB_SN_AlesBrelih_27091327.Resources.Data;
+using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
+using PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PB_SN_AlesBrelih_27091327.Windows.MessageWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Windows
 {
@@ -19,10 +23,15 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     /// </summary>
     public partial class OsebaManage : Window
     {
-        public OsebaManage()
+        private ManageOsebaViewModel _viewModel;
+        public OsebaManage(OsebaView oseba = null, Enums.ActionState Action=Enums.ActionState.Create ) //TODO: osebaview model in constructor
         {
             InitializeComponent();
+            _viewModel = new ManageOsebaViewModel(this,oseba,Action);
+            this.DataContext = _viewModel;
         }
+
+        
 
         private void OsebaManage_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -37,6 +46,16 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void BtnMinimiye_OnClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnOk_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SaveChanges();
+        }
+
+        private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

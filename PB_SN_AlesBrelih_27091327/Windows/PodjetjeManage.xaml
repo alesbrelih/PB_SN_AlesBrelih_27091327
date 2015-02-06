@@ -40,10 +40,10 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Label Name="LblImePodjetja" Style="{DynamicResource LabelManageOsebaInfo}" Content="Ime Podjetja"/>
-                    <TextBox Grid.Column="1" Name="TBoxImePodjetja"/>
+                    <TextBox Grid.Column="1" Name="TBoxImePodjetja" Text="{Binding Podjetje.ImePodjetja}"/>
 
                     <Label Grid.Row="1" Name="LblKontaktnaOseba" Content="Kontaktna Oseba" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                    <ComboBox Grid.Row="1" Grid.Column="1" Name="CBoxKontaktnaOseba"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="CBoxKontaktnaOseba" ItemsSource="{Binding VseOsebe}" SelectionChanged="CBoxKontaktnaOseba_SelectionChanged"/>
                 
                     <Grid Grid.Row="2" ColumnSpan="2">
                         <GroupBox Name="GBoxOsebniPodatki" Header="Kontaktna Oseba">
@@ -59,16 +59,16 @@
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Name="LblImeOseba" Content="Ime" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <Label Grid.Column="1" Name="LblImeOsebaVnos" Content="Neki"/>
+                                <TextBox Grid.Column="1" Text="{Binding TrenutnaKontaktna.Ime}"/>
                                 
                                 <Label Grid.Row="1" Name="LblPriimekOseba" Content="Priimek" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <Label Grid.Row="1" Grid.Column="1" Name="LblPriimekVnos" Content="Neki"/>
+                                <TextBox Grid.Row="1"  Grid.Column="2" Text="{Binding TrenutnaKontaktna.Priimek}"/>
                                 
                                 <Label Grid.Row="2" Name="LblEmailOseba" Content="E-mail" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <Label Grid.Row="2" Grid.Column="1" Name="LblEmailVnos" Content="Neki"/>
-                                
+                                <TextBox Grid.Row="2"  Grid.Column="2" Text="{Binding TrenutnaKontaktna.EMail}"/>
+
                                 <Label Grid.Row="3" Name="LblTelefonOseba" Content="Telefon" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <Label Grid.Row="3" Grid.Column="1" Name="LblTelefonVnos" Content="Neki"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TrenutnaKontaktna.Telephone}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -80,7 +80,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="BtnSave" Content="Shrani in Izhod"/>
+                <Button Name="BtnSave" Content="Shrani in Izhod" Click="BtnSave_OnClick"/>
                 <Button Grid.Column="1" Content="Preklici"/>
             </Grid>
 

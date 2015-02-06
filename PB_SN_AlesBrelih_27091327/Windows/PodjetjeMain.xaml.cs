@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PB_SN_AlesBrelih_27091327.Resources.Data;
+using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
+using PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Windows
 {
@@ -19,9 +22,20 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     /// </summary>
     public partial class PodjetjeMain : Window
     {
+
+        private MainPodjetjeViewModel _viewModel;
         public PodjetjeMain()
         {
             InitializeComponent();
+            _viewModel = new MainPodjetjeViewModel();
+            this.DataContext = _viewModel;
+            NastaviComboBox();
+        }
+
+        private void NastaviComboBox()
+        {
+            CBoxIzborPodjetja.SelectedValuePath = "Id";
+            CBoxIzborPodjetja.DisplayMemberPath = "ImePodjetja";
         }
 
         private void PodjetjeMain_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -37,6 +51,28 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void BtnMinimize_OnClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnOk_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            this.Close();
+        }
+
+        private void CBoxIzborPodjetja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CBoxIzborPodjetja.SelectedIndex != -1)
+                _viewModel.NastaviIzbranoPodjetje(int.Parse(CBoxIzborPodjetja.SelectedValue.ToString()));
+        }
+
+        private void BtnUrediOsebo_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediKontaktnaOsebo();
+        }
+
+        private void BtnUrediPodjetje_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediPodjetje();
         }
     }
 }

@@ -7,6 +7,17 @@ using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
 {
+    public class NajemView
+    {
+        private Najem x;
+
+        public NajemView(Najem x)
+        {
+            // TODO: Complete member initialization
+            this.x = x;
+        }
+        
+    }
     public class NajemViewMain
     {
 
@@ -20,6 +31,9 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
         public DateTime ZacetekNajema { get; set; }
         public DateTime KonecNajema { get; set; }
         public string ImeProstora { get; set; }
+
+
+        public Najem Najem { get; set; }
 
         public NajemViewMain(Najem najem)
         {

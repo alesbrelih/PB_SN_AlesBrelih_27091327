@@ -38,3 +38,7 @@ C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\PB_SN_AlesBrelih_27091327.exe
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\PB_SN_AlesBrelih_27091327.pdb
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\PB_SN_AlesBrelih_27091327.PBSN_Migrations.PBSN_DB_INI.resources
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\WarningWindow.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\WarningWindow.g.cs
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\DialogWindows.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\DialogWindows.g.cs
