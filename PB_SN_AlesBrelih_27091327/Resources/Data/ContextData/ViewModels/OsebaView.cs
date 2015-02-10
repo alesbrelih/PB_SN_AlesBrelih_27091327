@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
 {
@@ -96,6 +97,19 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
         VsaPodjetja = new ObservableCollection<Podjetje>();
     }
 
+    public OsebaView(int? id):this()
+    {
+        var oseba = ManageOsebaDB.VrniOsebo(id);
+        Id = oseba.Id;
+        Ime = oseba.Ime;
+        Priimek = oseba.Priimek;
+        EMail = oseba.EMail;
+        Telephone = oseba.Telephone;
+        if (oseba.VsaPodjetja != null)
+        {
+            oseba.VsaPodjetja.ToList().ForEach(podjetje => VsaPodjetja.Add(podjetje));
+        }
+    }
 
     public OsebaView(Oseba oseba) : this()
     {

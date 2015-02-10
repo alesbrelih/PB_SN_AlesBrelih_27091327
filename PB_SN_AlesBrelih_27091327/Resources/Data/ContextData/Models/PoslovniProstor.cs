@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models
 
         [Required]
         public int DnevnaCena { get; set; }
+
+        public virtual ObservableCollection<Najem> VsiNajemi { get; set; }
     }
 }

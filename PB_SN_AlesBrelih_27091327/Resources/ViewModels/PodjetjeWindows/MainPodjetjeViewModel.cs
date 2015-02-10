@@ -18,6 +18,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
 
         private PodjetjeView _trenutnoPodjetje;
+        private OsebaView _trenutnaKontaktna;
 
         public PodjetjeView IzbranoPodjetje
         {
@@ -32,12 +33,26 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
             }
         }
 
+        public OsebaView TrenutnaKontaktna
+        {
+            get { return _trenutnaKontaktna; }
+
+            set
+            {
+                _trenutnaKontaktna = value;
+
+                RaisePropertyChanged("TrenutnaKontaktna");
+            }
+        }
+
         public ObservableCollection<PodjetjeView> VsaPodjetja { get; set; }
+        public ObservableCollection<OsebaView> VseOsebe { get; set; }
 
 
         public MainPodjetjeViewModel()
         {
             VsaPodjetja = ManagePodjetjeDB.VrniVsaPodjetja();
+            VseOsebe = ManageOsebaDB.VrniVseOsebe();
         }
 
         #region inotify
@@ -56,11 +71,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
         internal void NastaviIzbranoPodjetje(int p)
         {
             IzbranoPodjetje = VsaPodjetja.First(x => x.Id == p);
+            TrenutnaKontaktna = IzbranoPodjetje.KontaktnaOseba;
         }
 
         internal void UrediKontaktnaOsebo()
         {
-            var urediOsebo = new OsebaManage(IzbranoPodjetje.KontaktnaOseba, Enums.ActionState.Edit);
+            var urediOsebo = new OsebaManage(TrenutnaKontaktna, Enums.ActionState.Edit);
             urediOsebo.ShowDialog();
 
             if (urediOsebo.DialogResult.HasValue && urediOsebo.DialogResult.Value)
@@ -73,13 +89,14 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
         internal void UrediPodjetje()
         {
-            var urediPodjetje = new PodjetjeManage(Enums.ActionState.Edit, IzbranoPodjetje);
+            var urediPodjetje = new PodjetjeManage(Enums.ActionState.Edit, IzbranoPodjetje, VseOsebe);
             urediPodjetje.ShowDialog();
 
             if (urediPodjetje.DialogResult.HasValue && urediPodjetje.DialogResult.Value)
             {
                 //SHRANI IN PREVERI ALI...BACKUP NRD
             }
+            TrenutnaKontaktna = IzbranoPodjetje.KontaktnaOseba;
         }
     }
 }

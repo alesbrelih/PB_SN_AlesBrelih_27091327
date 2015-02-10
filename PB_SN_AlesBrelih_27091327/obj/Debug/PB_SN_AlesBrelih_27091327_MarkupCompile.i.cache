@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\App.xaml
-8-708286214
+12-1707269089
 
-38-441992260
+46-384488705
 19731986798
-MainWindow.xaml;Resources\Dictionaries\MainLayout.xaml;Windows\MessageWindows\DialogWindows.xaml;Windows\MessageWindows\WarningWindow.xaml;Windows\OsebaMain.xaml;Windows\OsebaManage.xaml;Windows\PodjetjeMain.xaml;Windows\PodjetjeManage.xaml;
+MainWindow.xaml;Resources\Dictionaries\MainLayout.xaml;Windows\MessageWindows\DialogWindows.xaml;Windows\MessageWindows\WarningWindow.xaml;Windows\NajemMain.xaml;Windows\NajemManage.xaml;Windows\OsebaMain.xaml;Windows\OsebaManage.xaml;Windows\PodjetjeMain.xaml;Windows\PodjetjeManage.xaml;Windows\ProstorMain.xaml;Windows\ProstorManage.xaml;
 
 False
 

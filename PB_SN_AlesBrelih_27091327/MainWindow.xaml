@@ -28,6 +28,11 @@
                 <Separator Background="White"/>
                 <MenuItem Header="_Exit"/>
             </MenuItem>
+            <MenuItem Header="_Prostori">
+                <MenuItem Header="_Pregled" Name="PregledNajemMenuItem" Click="PregledNajemMenuItem_OnClick"/>
+                <Separator Background="White"/>
+                <MenuItem Header="_Nov" Name="NovNajemMenuItem"/>
+            </MenuItem>
             <MenuItem Header="_Podjetja">
                 <MenuItem Header="_Pregled" Name="PregledPodjetjaMenuItem" Click="PregledPodjetjaMenuItem_OnClick"/>
                 <Separator Background="White"/>

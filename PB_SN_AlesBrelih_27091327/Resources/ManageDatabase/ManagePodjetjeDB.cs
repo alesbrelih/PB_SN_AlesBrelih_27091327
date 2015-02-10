@@ -40,7 +40,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                         new Podjetje
                     {
                         ImePodjetja = Podjetje.ImePodjetja,
-                        KontaktnaOseba =  Podjetje
+                        KontaktnaOseba = new Oseba(Podjetje.KontaktnaOseba)
                     });
                     db.SaveChanges();
                 }
@@ -61,7 +61,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                 {
                     var izbranoPodjetje = db.VsaPodjetja.Find(Podjetje.Id);
                     izbranoPodjetje.ImePodjetja = Podjetje.ImePodjetja;
-                    izbranoPodjetje.KontaktnaOseba=new Oseba(Podjetje.KontaktnaOseba);
+                    izbranoPodjetje.KontaktnaOseba = db.VseOsebe.Find(Podjetje.Id);
                     db.Entry(izbranoPodjetje).State=EntityState.Modified;
                     
                     db.SaveChanges();

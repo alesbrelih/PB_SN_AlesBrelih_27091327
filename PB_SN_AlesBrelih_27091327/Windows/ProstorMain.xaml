@@ -1,0 +1,76 @@
+﻿<Window x:Class="PB_SN_AlesBrelih_27091327.Windows.ProstorMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ProstorMain" Height="634.328" Width="413.433"
+        WindowStyle="None" BorderBrush="Gray" BorderThickness="3"
+        AllowsTransparency="True" ResizeMode="CanResizeWithGrip"
+        MouseDown="ProstorMain_OnMouseDown">
+    <Window.Resources>
+        <ResourceDictionary Source="../Resources/Dictionaries/MainLayout.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <Label Name="LblMainProstorWindow" Content="Pregled prostorov" Style="{DynamicResource LabelH1Style}"/>
+            <WrapPanel VerticalAlignment="Center" FlowDirection="RightToLeft">
+                <Button Style="{DynamicResource WindowStateClose}" Name="BtnClose" Click="BtnClose_OnClick"></Button>
+                <Button Style="{DynamicResource WindowStateMinimize}" Name="BtnMinimize" Click="BtnMinimize_OnClick"></Button>
+
+            </WrapPanel>
+        </Grid>
+        <Grid Row="1" Background="Red">
+
+        </Grid>
+        <Grid Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Header="VsiProstori">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{DynamicResource LabelManageOsebaInfo}" Content="Prostor"/>
+                    <ComboBox Grid.Column="1" Name="CBoxProstori" ItemsSource="{Binding VsiProstori}" SelectionChanged="CBoxProstori_SelectionChanged"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="Podatki o prostoru">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Ime Prostora" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding IzbraniProstor.ImeProstora}"/>
+                    
+                    <Label Grid.Row="1" Content="Dnevna Cena" Style="{DynamicResource LabelManageOsebaInfo}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding IzbraniProstor.DnevnaCena}"/>
+                    
+                    <Button Grid.Row="3" Name="BtnUredi" Background="Gray" Content="Uredi" Click="BtnUredi_OnClick"/>
+                    <Button Grid.Row="3" Name="BtnIzbrisi"  Grid.Column="1" Background="Gray" Content="Izbrisi" Click="BtnIzbrisi_OnClick"></Button>
+                </Grid>
+            </GroupBox>
+            <Grid Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="BtnOk" Content="Zapri" Click="BtnOk_OnClick"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

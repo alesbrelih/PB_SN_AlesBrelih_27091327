@@ -62,7 +62,10 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void CBoxIzborPodjetja_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CBoxIzborPodjetja.SelectedIndex != -1)
+            {
                 _viewModel.NastaviIzbranoPodjetje(int.Parse(CBoxIzborPodjetja.SelectedValue.ToString()));
+            }
+                
         }
 
         private void BtnUrediOsebo_OnClick(object sender, RoutedEventArgs e)
@@ -73,6 +76,8 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void BtnUrediPodjetje_OnClick(object sender, RoutedEventArgs e)
         {
             _viewModel.UrediPodjetje();
+            
+            
         }
     }
 }

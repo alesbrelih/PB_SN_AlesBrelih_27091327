@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows;
+using System.Collections.ObjectModel;
 
 namespace PB_SN_AlesBrelih_27091327.Windows
 {
@@ -23,10 +24,10 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     public partial class PodjetjeManage : Window
     {
         private ManagePodjetjeViewModel _viewModel;
-        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null)
+        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null, ObservableCollection<OsebaView> vseOsebe = null)
         {
             InitializeComponent();
-            _viewModel = new ManagePodjetjeViewModel(Action,podjetje);
+            _viewModel = new ManagePodjetjeViewModel(Action,podjetje,vseOsebe);
             _viewModel.NastaviComboBox(CBoxKontaktnaOseba);
             this.DataContext = _viewModel;
         }

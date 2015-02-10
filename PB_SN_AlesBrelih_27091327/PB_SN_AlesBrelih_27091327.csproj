@@ -89,11 +89,13 @@
     <Compile Include="Resources\Data\ContextData\ViewModels\NajemView.cs" />
     <Compile Include="Resources\Data\ContextData\ViewModels\OsebaView.cs" />
     <Compile Include="Resources\Data\ContextData\ViewModels\PodjetjeView.cs" />
+    <Compile Include="Resources\Data\ContextData\ViewModels\ProstorView.cs" />
     <Compile Include="Resources\Data\CustomTypes.cs" />
     <Compile Include="Resources\Data\Enums.cs" />
     <Compile Include="Resources\ManageDatabase\ManageNajemDB.cs" />
     <Compile Include="Resources\ManageDatabase\ManageOsebaDB.cs" />
     <Compile Include="Resources\ManageDatabase\ManagePodjetjeDB.cs" />
+    <Compile Include="Resources\ManageDatabase\ManageProstorDB.cs" />
     <Compile Include="Resources\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Resources\ViewModels\MessageWindows\DialogWindowViewModel.cs" />
     <Compile Include="Resources\ViewModels\MessageWindows\WarningWindowViewModel.cs" />
@@ -101,11 +103,19 @@
     <Compile Include="Resources\ViewModels\OsebaWindows\ManageOsebaViewModel.cs" />
     <Compile Include="Resources\ViewModels\PodjetjeWindows\ManagePodjetjeViewModel.cs" />
     <Compile Include="Resources\ViewModels\PodjetjeWindows\MainPodjetjeViewModel.cs" />
+    <Compile Include="Resources\ViewModels\ProstorWindows\MainProstorViewModel.cs" />
+    <Compile Include="Resources\ViewModels\ProstorWindows\ManageProstorViewModel.cs" />
     <Compile Include="Windows\MessageWindows\DialogWindows.xaml.cs">
       <DependentUpon>DialogWindows.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MessageWindows\WarningWindow.xaml.cs">
       <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NajemMain.xaml.cs">
+      <DependentUpon>NajemMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NajemManage.xaml.cs">
+      <DependentUpon>NajemManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OsebaMain.xaml.cs">
       <DependentUpon>OsebaMain.xaml</DependentUpon>
@@ -118,6 +128,12 @@
     </Compile>
     <Compile Include="Windows\PodjetjeManage.xaml.cs">
       <DependentUpon>PodjetjeManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ProstorMain.xaml.cs">
+      <DependentUpon>ProstorMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ProstorManage.xaml.cs">
+      <DependentUpon>ProstorManage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\NajemMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NajemManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\OsebaMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +180,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\PodjetjeManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ProstorMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ProstorManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -53,11 +53,14 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
             VsiNajemi=new ObservableCollection<NajemView>();
         }
 
-        public PodjetjeView(Podjetje podjetje) : this()
+        public PodjetjeView(Podjetje podjetje,int? kontaktnaOseba = null) : this()
         {
             Id = podjetje.PodjetjeId;
             ImePodjetja = podjetje.ImePodjetja;
-            KontaktnaOseba = new OsebaView(podjetje.KontaktnaOseba);
+            if (kontaktnaOseba != null)
+                KontaktnaOseba = new OsebaView(kontaktnaOseba);
+            else
+                KontaktnaOseba = new OsebaView(podjetje.KontaktnaOseba);
             if (podjetje.NajemiPodjetja != null)
             {
                 podjetje.NajemiPodjetja.ToList().ForEach(x=>VsiNajemi.Add(new NajemView(x)));

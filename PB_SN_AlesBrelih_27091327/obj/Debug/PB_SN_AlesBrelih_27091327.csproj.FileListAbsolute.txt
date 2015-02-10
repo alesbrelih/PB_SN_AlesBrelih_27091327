@@ -42,3 +42,11 @@ C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\WarningWindow.g.cs
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\DialogWindows.baml
 C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\MessageWindows\DialogWindows.g.cs
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\NajemMain.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\NajemManage.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\ProstorMain.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\ProstorManage.baml
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\NajemMain.g.cs
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\NajemManage.g.cs
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\ProstorMain.g.cs
+C:\Users\Ales\Desktop\PB_SN\PB_SN_AlesBrelih_27091327\PB_SN_AlesBrelih_27091327\obj\Debug\Windows\ProstorManage.g.cs

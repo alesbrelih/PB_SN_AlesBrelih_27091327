@@ -48,10 +48,10 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
         public Enums.ActionState ActionState { get; set; }
 
-        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, PodjetjeView podjetje)
+        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, PodjetjeView podjetje, ObservableCollection<OsebaView> vseOsebe)
         {
             Podjetje = podjetje ?? new PodjetjeView();
-            VseOsebe = ManageOsebaDB.VrniVseOsebe();
+            VseOsebe = vseOsebe==null?ManageOsebaDB.VrniVseOsebe():vseOsebe;
             TrenutnaKontaktna = Podjetje.KontaktnaOseba;
             ActionState = Action;
         }
@@ -93,6 +93,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
                 if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
                 {
                     ManagePodjetjeDB.UrediPodjetje(Podjetje);
+                    Podjetje.KontaktnaOseba = TrenutnaKontaktna;
                 }
             }
 
