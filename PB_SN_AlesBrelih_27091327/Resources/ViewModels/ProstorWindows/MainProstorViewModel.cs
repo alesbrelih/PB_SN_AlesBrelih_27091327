@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
@@ -71,13 +72,21 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
         internal void UrediProstor()
         {
             var urediProstor = new ProstorManage(IzbraniProstor,Enums.ActionState.Edit);
-            urediProstor.Show();
+            urediProstor.ShowDialog();
         }
 
-        internal void IzbrisiProstor()
+        internal void IzbrisiProstor(ref ComboBox cBox)
         {
-            var izbrisiProstor = new ProstorManage(IzbraniProstor, Enums.ActionState.Delete);
-            izbrisiProstor.Show();
+            var izbrisiProstor = new ProstorManage(IzbraniProstor, Enums.ActionState.Delete,VsiProstori,cBox);
+            izbrisiProstor.ShowDialog();
+            if (izbrisiProstor.DialogResult.HasValue && izbrisiProstor.DialogResult.Value)
+            {
+                cBox.SelectedIndex = -1;
+                VsiProstori = izbrisiProstor._viewModel.VsiProstori;
+                IzbraniProstor = null;
+            }
+            
+
         }
     }
 }

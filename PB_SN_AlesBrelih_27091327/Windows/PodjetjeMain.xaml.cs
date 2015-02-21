@@ -30,7 +30,10 @@ namespace PB_SN_AlesBrelih_27091327.Windows
             _viewModel = new MainPodjetjeViewModel();
             this.DataContext = _viewModel;
             NastaviComboBox();
+            
         }
+
+        
 
         private void NastaviComboBox()
         {
@@ -78,6 +81,11 @@ namespace PB_SN_AlesBrelih_27091327.Windows
             _viewModel.UrediPodjetje();
             
             
+        }
+
+        private void BtnIzbrisiPodjetje_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.IzbrisiPodjetje(CBoxIzborPodjetja);
         }
     }
 }

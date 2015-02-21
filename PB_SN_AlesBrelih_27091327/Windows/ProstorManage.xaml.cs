@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Shapes;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows;
+using PB_SN_AlesBrelih_27091327.Windows.MessageWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Windows
 {
@@ -23,11 +25,11 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     public partial class ProstorManage : Window
     {
 
-        private ManageProstorViewModel _viewModel;
-        public ProstorManage(ProstorView prostor, Enums.ActionState action)
+        public readonly ManageProstorViewModel _viewModel;
+        public ProstorManage(ProstorView prostor, Enums.ActionState action, ObservableCollection<ProstorView> prostorView = null,ComboBox cBox=null)
         {
             InitializeComponent();
-            _viewModel = new ManageProstorViewModel(prostor, action);
+            _viewModel = new ManageProstorViewModel(prostor, action, prostorView,cBox);
             this.DataContext = _viewModel;
             NastaviOkno(action);
         }
@@ -63,7 +65,12 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void BtnShrani_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.SaveChanges();
+            
+                _viewModel.SaveChanges();
+                this.DialogResult = true;
+                this.Close();
+            
+
         }
 
         private void BtnIzhod_OnClick(object sender, RoutedEventArgs e)

@@ -82,6 +82,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                 {
                     var izbranoPodjetje = db.VsaPodjetja.Find(Podjetje.Id);
                     db.VsaPodjetja.Remove(izbranoPodjetje);
+                    db.VsiNajemi.Where(najem=>najem.Podjetje.PodjetjeId==Podjetje.Id).ToList().ForEach(p=>db.VsiNajemi.Remove(p));
 
                     db.SaveChanges();
                 }

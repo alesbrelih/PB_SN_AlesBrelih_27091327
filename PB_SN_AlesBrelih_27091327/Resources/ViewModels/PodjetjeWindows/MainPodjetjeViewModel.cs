@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
@@ -97,6 +98,13 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
                 //SHRANI IN PREVERI ALI...BACKUP NRD
             }
             TrenutnaKontaktna = IzbranoPodjetje.KontaktnaOseba;
+        }
+
+        internal void IzbrisiPodjetje(ComboBox cBox)
+        {
+            var izbrisPodjetja = new PodjetjeManage(Enums.ActionState.Delete, IzbranoPodjetje, VseOsebe,cBox);
+            izbrisPodjetja.ShowDialog();
+
         }
     }
 }

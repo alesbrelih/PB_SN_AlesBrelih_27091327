@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
@@ -47,14 +48,19 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
         public ObservableCollection<OsebaView> VseOsebe { get; set; }
 
         public Enums.ActionState ActionState { get; set; }
+        public ComboBox OsebeComboBox { get; set; }
 
-        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, PodjetjeView podjetje, ObservableCollection<OsebaView> vseOsebe)
+        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, PodjetjeView podjetje, ObservableCollection<OsebaView> vseOsebe,ComboBox cBox)
         {
             Podjetje = podjetje ?? new PodjetjeView();
             VseOsebe = vseOsebe==null?ManageOsebaDB.VrniVseOsebe():vseOsebe;
             TrenutnaKontaktna = Podjetje.KontaktnaOseba;
             ActionState = Action;
+            OsebeComboBox = cBox;
+            
         }
+
+        
 
         #region inotify
 
@@ -99,11 +105,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
             if (ActionState == Enums.ActionState.Delete)
             {
-                var confirmationWindow = new DialogWindows("Shrani spremembe?");
+                var confirmationWindow = new DialogWindows("Izbrisi Podjetje?");
                 confirmationWindow.ShowDialog();
                 if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
                 {
                     ManagePodjetjeDB.IzbrisiPodjetje(Podjetje);
+                    OsebeComboBox.SelectedIndex = -1;
                 }
                 
             }

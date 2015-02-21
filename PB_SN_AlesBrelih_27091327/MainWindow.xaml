@@ -31,7 +31,7 @@
             <MenuItem Header="_Prostori">
                 <MenuItem Header="_Pregled" Name="PregledNajemMenuItem" Click="PregledNajemMenuItem_OnClick"/>
                 <Separator Background="White"/>
-                <MenuItem Header="_Nov" Name="NovNajemMenuItem"/>
+                <MenuItem Header="_Nov" Name="NovNajemMenuItem" Click="NovNajemMenuItem_OnClick"/>
             </MenuItem>
             <MenuItem Header="_Podjetja">
                 <MenuItem Header="_Pregled" Name="PregledPodjetjaMenuItem" Click="PregledPodjetjaMenuItem_OnClick"/>

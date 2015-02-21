@@ -85,5 +85,10 @@ namespace PB_SN_AlesBrelih_27091327
             var pregledProstorov = new ProstorMain();
             pregledProstorov.Show();
         }
+
+        private void NovNajemMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UstvariProstor();
+        }
     }
 }

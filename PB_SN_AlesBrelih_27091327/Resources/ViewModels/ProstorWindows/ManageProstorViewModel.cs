@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
@@ -30,7 +33,10 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
             }
         }
 
+        public ObservableCollection<ProstorView> VsiProstori { get; set; }
         public Enums.ActionState ActionState { get; set; }
+
+        public ComboBox VsiProstoriComboBox { get; set; }
 
         #endregion
 
@@ -38,10 +44,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
 
         #region constr
 
-        public ManageProstorViewModel(ProstorView prostor, Enums.ActionState action)
+        public ManageProstorViewModel(ProstorView prostor, Enums.ActionState action, ObservableCollection<ProstorView> prostorList = null, ComboBox cBox = null)
         {
             IzbraniProstor = prostor;
             ActionState = action;
+            VsiProstori = prostorList;
+            VsiProstoriComboBox = cBox;
         }
         #endregion
 
@@ -77,12 +85,34 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
                     try
                     {
                         ManageProstorDB.IzbrisiProstor(IzbraniProstor);
+                        var prostorView = VsiProstori.First(prostor => prostor.Id == IzbraniProstor.Id);
+                        VsiProstoriComboBox.SelectedIndex = -1;
+                        VsiProstori.Remove(prostorView);
                         //TODO:REMOVE FROM LIST UPDATE STUFF DO STUDFF in CE OBSTAJAJO NAJEMI S TEM PROSTOROM DIALOG WINDOW DELETE?
+
                     }
                     catch (Exception ex)
                     {
                         var errorWindow = new WarningWindow(ex.Message);
-                        errorWindow.ShowDialog();
+                        errorWindow.Show();
+                    }
+                }
+            }
+            if (ActionState == Enums.ActionState.Create)
+            {
+                var dialogWindow = new DialogWindows("Ustvarim prostor");
+                dialogWindow.ShowDialog();
+                if (dialogWindow.DialogResult.HasValue && dialogWindow.DialogResult.Value)
+                {
+                    try
+                    {
+                        ManageProstorDB.UstvariProstor(IzbraniProstor);
+                    }
+                    catch (Exception ex)
+                    {
+                        var errorWindow = new WarningWindow(ex.Message);
+                        errorWindow.Show();
+                       
                     }
                 }
             }

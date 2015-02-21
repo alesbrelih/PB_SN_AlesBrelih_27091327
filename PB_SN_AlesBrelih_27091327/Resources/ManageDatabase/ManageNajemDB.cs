@@ -31,5 +31,27 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
             }
             
         }
+
+        internal static void IzbrisiNajeme(ObservableCollection<NajemViewMain> observableCollection)
+        {
+            using (var db = new PBDB())
+            {
+                foreach (NajemViewMain najem in observableCollection)
+                {
+                    try
+                    {
+                        var najemDb = db.VsiNajemi.Find(najem.NajemId);
+                        db.VsiNajemi.Remove(najemDb);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Napaka v komunikaciji z bazo");
+                        throw;
+                    }
+                    
+                }
+            }
+        }
     }
 }

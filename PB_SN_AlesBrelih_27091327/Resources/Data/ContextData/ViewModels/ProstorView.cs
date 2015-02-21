@@ -52,12 +52,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
             }
         }
 
-        public ObservableCollection<NajemView> VsiNajemi { get; set; }
+        public ObservableCollection<NajemViewMain> VsiNajemi { get; set; }
         #endregion
 
         public ProstorView()
         {
-            VsiNajemi = new ObservableCollection<NajemView>();
+            VsiNajemi = new ObservableCollection<NajemViewMain>();
         }
 
         public ProstorView(PoslovniProstor prostor):this()
@@ -67,7 +67,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
             DnevnaCena = prostor.DnevnaCena;
             if (prostor.VsiNajemi != null)
             {
-                prostor.VsiNajemi.ToList().ForEach(najem=>VsiNajemi.Add(new NajemView(najem)));
+                prostor.VsiNajemi.ToList().ForEach(najem=>VsiNajemi.Add(new NajemViewMain(najem)));
             }
         }
 

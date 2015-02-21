@@ -24,12 +24,24 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     public partial class PodjetjeManage : Window
     {
         private ManagePodjetjeViewModel _viewModel;
-        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null, ObservableCollection<OsebaView> vseOsebe = null)
+        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null, ObservableCollection<OsebaView> vseOsebe = null,ComboBox cBox=null)
         {
             InitializeComponent();
-            _viewModel = new ManagePodjetjeViewModel(Action,podjetje,vseOsebe);
+            _viewModel = new ManagePodjetjeViewModel(Action,podjetje,vseOsebe,cBox);
             _viewModel.NastaviComboBox(CBoxKontaktnaOseba);
             this.DataContext = _viewModel;
+            NastaviPolja(Action);
+        }
+
+        private void NastaviPolja(Enums.ActionState action)
+        {
+            if(action==Enums.ActionState.Delete)
+            {
+                CBoxKontaktnaOseba.IsEnabled = false;
+                TBoxImePodjetja.IsEnabled = false;
+                GBoxOsebniPodatki.IsEnabled = false;
+            }
+
         }
 
        

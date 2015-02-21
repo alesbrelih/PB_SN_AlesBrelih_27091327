@@ -5,9 +5,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
+using PB_SN_AlesBrelih_27091327.Windows;
+using PB_SN_AlesBrelih_27091327.Windows.MessageWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
 {
@@ -57,5 +60,16 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        internal void UstvariProstor()
+        {
+            var ustvariProstor = new ProstorManage(new ProstorView(), Enums.ActionState.Create);
+            ustvariProstor.ShowDialog();
+            if (ustvariProstor.DialogResult.HasValue && ustvariProstor.DialogResult.Value)
+            {
+                var messageWindow = new WarningWindow("Prostor uspesno ustvarjen.");
+                messageWindow.ShowDialog();
+            }
+        }
     }
 }

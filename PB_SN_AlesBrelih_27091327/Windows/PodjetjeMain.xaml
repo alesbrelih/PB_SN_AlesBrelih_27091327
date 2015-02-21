@@ -95,7 +95,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <Button Name="BtnUrediPodjetje" Content="Uredi" Click="BtnUrediPodjetje_OnClick"/>
-                            <Button Grid.Column="1" Name="BtnIzbrisiPodjetje" Content="Izbrisi"/>
+                            <Button Grid.Column="1" Name="BtnIzbrisiPodjetje" Content="Izbrisi" Click="BtnIzbrisiPodjetje_OnClick"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
