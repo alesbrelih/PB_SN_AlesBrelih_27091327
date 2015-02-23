@@ -71,7 +71,7 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void CBoxKontaktnaOseba_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _viewModel.SpremeniIzbranoKontaktno(int.Parse(CBoxKontaktnaOseba.SelectedValue.ToString()));
+            _viewModel.SpremeniIzbranoKontaktno(CBoxKontaktnaOseba.SelectedIndex);
         }
     }
 }

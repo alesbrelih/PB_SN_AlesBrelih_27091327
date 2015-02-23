@@ -16,18 +16,14 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
 {
     public class MainWindowViewModel:INotifyPropertyChanged
     {
-        private ObservableCollection<NajemViewMain> _vsiNajemi;
 
 
-        public ObservableCollection<NajemViewMain> VsiNajemi
-        {
-            get { return _vsiNajemi; }
-            set { _vsiNajemi = value; }
-        }
+
+        public ObservableCollection<NajemView> VsiNajemi { get; set; }
 
         public MainWindowViewModel()
         {
-            VsiNajemi = ManageNajemDB.VrniNajemeForMainWindow();
+            VsiNajemi = ManageNajemDB.VrniVseNajeme();
             
         }
 
@@ -55,8 +51,8 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
                         ImeProstora = "Celovska 138",
                         DnevnaCena = 135
                     }
-                }
-            }.ForEach(x => ManageNajemDB.NovNajem(x));
+                }};
+            //}.ForEach(x => ManageNajemDB.NovNajem(x));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -70,6 +66,28 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
                 var messageWindow = new WarningWindow("Prostor uspesno ustvarjen.");
                 messageWindow.ShowDialog();
             }
+        }
+
+        internal void PregledNajemov()
+        {
+            var pregledNajem = new NajemMain();
+            pregledNajem.ShowDialog();
+            //if(pregledNajem.DialogResult.HasValue&&pregledNajem.DialogResult.Value)
+            //{
+            //    VsiNajemi = ManageNajemDB.VrniNajemeForMainWindow();
+            //}
+        }
+
+        internal void NovNajem()
+        {
+            var novNajem = new NajemManage();
+            novNajem.ShowDialog();
+            VsiNajemi = ManageNajemDB.VrniVseNajeme();
+            //if(novNajem.DialogResult.HasValue&&novNajem.DialogResult.Value)
+            //{
+            //    VsiNajemi = null;
+            //    VsiNajemi = ManageNajemDB.VrniNajemeForMainWindow();
+            //}
         }
     }
 }

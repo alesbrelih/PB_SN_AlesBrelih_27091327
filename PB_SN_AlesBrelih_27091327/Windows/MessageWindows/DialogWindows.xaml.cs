@@ -55,6 +55,7 @@ namespace PB_SN_AlesBrelih_27091327.Windows.MessageWindows
 
         private void BtnNo_OnClick(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
         }
     }

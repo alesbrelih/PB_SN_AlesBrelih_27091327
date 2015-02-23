@@ -8,11 +8,7 @@ using System.Text;
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models
 {
     public class Oseba
-    {
-        private ViewModels.OsebaView Oseba1;
-
-        
-
+    {      
         public int OsebaID { get; set; }
 
         public string Ime { get; set; }

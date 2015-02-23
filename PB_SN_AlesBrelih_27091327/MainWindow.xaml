@@ -28,6 +28,12 @@
                 <Separator Background="White"/>
                 <MenuItem Header="_Exit"/>
             </MenuItem>
+            <MenuItem Header="Najem">
+                <MenuItem Header="Pregled" Name="MenuItemPregledNajem" Click="MenuItemPregledNajem_Click"/>
+                <Separator/>
+                <MenuItem Header="Nov" Name="MenuItemNovNajem" Click="MenuItemNovNajem_Click"/>
+
+            </MenuItem>
             <MenuItem Header="_Prostori">
                 <MenuItem Header="_Pregled" Name="PregledNajemMenuItem" Click="PregledNajemMenuItem_OnClick"/>
                 <Separator Background="White"/>
@@ -52,14 +58,14 @@
         </Menu>
         <Grid Grid.Row="2">
             <GroupBox Header="Bussiness Overview">
-                <DataGrid Name="DataGridMain" ItemsSource="{Binding VsiNajemi, Mode=TwoWay}">
+                <DataGrid Name="DataGridMain" ItemsSource="{Binding VsiNajemi, NotifyOnSourceUpdated=True}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ImePodjetja}" Header="Ime Podjetja" />
-                        <DataGridTextColumn Binding="{Binding KontaktnaOseba}" Header="Kontaktna Oseba" />
+                        <DataGridTextColumn Binding="{Binding Podjetje.ImePodjetja}" Header="Ime Podjetja" />
+                        <DataGridTextColumn Binding="{Binding Podjetje.KontaktnaOseba.Izpis}" Header="Kontaktna Oseba" />
 
-                        <DataGridTextColumn Binding="{Binding ImeProstora}" Header="Poslovni Prostor" />
-                        <DataGridTextColumn Binding="{Binding ZacetekNajema}" Header="Od:" />
-                        <DataGridTextColumn Binding="{Binding KonecNajema}" Header="Do:" />
+                        <DataGridTextColumn Binding="{Binding Prostor.ImeProstora}" Header="Poslovni Prostor" />
+                        <DataGridTextColumn Binding="{Binding ZacetniIzpis}" Header="Od:" />
+                        <DataGridTextColumn Binding="{Binding KoncniIzpis}" Header="Do:" />
 
                     </DataGrid.Columns>
 

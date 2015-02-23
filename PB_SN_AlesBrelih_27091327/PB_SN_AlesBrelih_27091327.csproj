@@ -99,6 +99,8 @@
     <Compile Include="Resources\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Resources\ViewModels\MessageWindows\DialogWindowViewModel.cs" />
     <Compile Include="Resources\ViewModels\MessageWindows\WarningWindowViewModel.cs" />
+    <Compile Include="Resources\ViewModels\NajemWindows\MainNajemViewModel.cs" />
+    <Compile Include="Resources\ViewModels\NajemWindows\ManageNajemViewModel.cs" />
     <Compile Include="Resources\ViewModels\OsebaWindows\MainOsebaViewModel.cs" />
     <Compile Include="Resources\ViewModels\OsebaWindows\ManageOsebaViewModel.cs" />
     <Compile Include="Resources\ViewModels\PodjetjeWindows\ManagePodjetjeViewModel.cs" />

@@ -10,6 +10,7 @@ using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
 using PB_SN_AlesBrelih_27091327.Windows;
+using PB_SN_AlesBrelih_27091327.Windows.MessageWindows;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
 {
@@ -77,12 +78,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
 
         internal void IzbrisiProstor(ref ComboBox cBox)
         {
-            var izbrisiProstor = new ProstorManage(IzbraniProstor, Enums.ActionState.Delete,VsiProstori,cBox);
+            var izbrisiProstor = new DialogWindows("Izbrišem prostor?");
             izbrisiProstor.ShowDialog();
             if (izbrisiProstor.DialogResult.HasValue && izbrisiProstor.DialogResult.Value)
             {
                 cBox.SelectedIndex = -1;
-                VsiProstori = izbrisiProstor._viewModel.VsiProstori;
+                VsiProstori.Remove(IzbraniProstor);
                 IzbraniProstor = null;
             }
             

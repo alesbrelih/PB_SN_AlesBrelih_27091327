@@ -85,7 +85,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows
             {
                 try
                 {
-                    var dialogWindow = new DialogWindows();
+                    var dialogWindow = new DialogWindows("Ustvarim osebo?");
                     dialogWindow.ShowDialog();
                     if (dialogWindow.DialogResult.HasValue && dialogWindow.DialogResult.Value)
                     {
@@ -137,6 +137,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows
                     errorWindow.Show();
                 }
             }
+            
 
         }
     }

@@ -27,7 +27,10 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                 new ObservableCollection<OsebaView>();
             using (var db = new PBDB())
             {
-                db.VseOsebe.ToList().ForEach(oseba => listOseb.Add(new OsebaView(oseba)));
+                foreach(var oseba in db.VseOsebe)
+                {
+                    listOseb.Add(new OsebaView(oseba));
+                }
             }
             return listOseb;
         }

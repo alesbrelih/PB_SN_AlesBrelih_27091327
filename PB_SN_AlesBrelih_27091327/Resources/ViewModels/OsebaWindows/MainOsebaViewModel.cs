@@ -34,11 +34,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows
             }
         }
 
-        public ObservableCollection<OsebaView> VseOsebe
-        {
-            get;
-            set;
-        }
+        public ObservableCollection<OsebaView> VseOsebe { get; set; }
 
         public MainOsebaViewModel()
         {

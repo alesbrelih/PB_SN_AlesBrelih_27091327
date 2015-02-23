@@ -102,8 +102,12 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
         internal void IzbrisiPodjetje(ComboBox cBox)
         {
-            var izbrisPodjetja = new PodjetjeManage(Enums.ActionState.Delete, IzbranoPodjetje, VseOsebe,cBox);
-            izbrisPodjetja.ShowDialog();
+            var confirmationWindow = new DialogWindows("Izbrišem podjetje?");
+            confirmationWindow.ShowDialog();
+            if(confirmationWindow.DialogResult.HasValue&&confirmationWindow.DialogResult.Value)
+            {
+                ManagePodjetjeDB.IzbrisiPodjetje(IzbranoPodjetje);
+            }
 
         }
     }

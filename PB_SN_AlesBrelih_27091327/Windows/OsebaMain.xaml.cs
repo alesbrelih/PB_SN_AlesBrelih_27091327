@@ -27,6 +27,7 @@ namespace PB_SN_AlesBrelih_27091327.Windows
             InitializeComponent();
             _viewModel = new MainOsebaViewModel();
             this.DataContext = _viewModel;
+            CBoxOsebe.ItemsSource = _viewModel.VseOsebe;
             NastaviComboBox();
         }
 

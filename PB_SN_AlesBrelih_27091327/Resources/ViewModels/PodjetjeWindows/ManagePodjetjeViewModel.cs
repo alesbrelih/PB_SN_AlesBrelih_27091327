@@ -88,6 +88,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
                 if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
                 {
                     //TRY CATCH
+                    Podjetje.KontaktnaOseba = TrenutnaKontaktna;
                     ManagePodjetjeDB.UstvariPodjetje(Podjetje);
                 }
                 
@@ -124,7 +125,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
             }
             else
             {
-                TrenutnaKontaktna = VseOsebe.First(x => x.Id == id);
+                TrenutnaKontaktna = VseOsebe[id];
             }
         }
 

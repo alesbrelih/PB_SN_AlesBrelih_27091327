@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,74 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     /// </summary>
     public partial class NajemMain : Window
     {
+
+        private MainNajemViewModel _viewModel;
+
         public NajemMain()
         {
             InitializeComponent();
+
+            _viewModel = new MainNajemViewModel();
+            this.DataContext = _viewModel;
+
+            NastaviComboBoxe();
+        }
+
+        private void NastaviComboBoxe()
+        {
+            CBoxNajemi.SelectedValuePath = "Id";
+            CBoxNajemi.DisplayMemberPath = "Izpis";
+            
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+
+        private void BtnUrediProstor_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediProstor();
+        }
+
+        private void BtnUrediPodjetje_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediPodjetje();
+        }
+
+        private void BtnUrediNajem_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediTrenutniNajem();
+        }
+
+        private void BtnIzbrisiNajem_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.IzbrisiTrenutniNajem(CBoxNajemi);
+        }
+
+        private void BtnOk_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
+
+        private void CBoxNajemi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _viewModel.NastaviTrenutniNajem(CBoxNajemi.SelectedIndex);
         }
     }
 }

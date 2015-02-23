@@ -61,10 +61,14 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
                 KontaktnaOseba = new OsebaView(kontaktnaOseba);
             else
                 KontaktnaOseba = new OsebaView(podjetje.KontaktnaOseba);
-            if (podjetje.NajemiPodjetja != null)
-            {
-                podjetje.NajemiPodjetja.ToList().ForEach(x=>VsiNajemi.Add(new NajemView(x)));
-            }
+            //if (podjetje.NajemiPodjetja != null)
+            //{
+            //    podjetje.NajemiPodjetja.ToList().ForEach(x=>VsiNajemi.Add(new NajemView(x)));
+            //    foreach(var najem in podjetje.NajemiPodjetja)
+            //    {
+            //        VsiNajemi.Add(new NajemView(najem));
+            //    }
+            //}
         }
 
 

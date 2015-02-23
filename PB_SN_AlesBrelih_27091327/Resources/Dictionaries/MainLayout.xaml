@@ -167,4 +167,9 @@
     <Style x:Key="ButtonWarningWindow" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Width" Value="100"/>
     </Style> 
+    
+    <Style TargetType="{x:Type DatePicker}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
 </ResourceDictionary>

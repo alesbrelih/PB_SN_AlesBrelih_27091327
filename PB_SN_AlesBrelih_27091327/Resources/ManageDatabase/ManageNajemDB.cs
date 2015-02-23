@@ -22,11 +22,16 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
             return listNajem;
         }
 
-        internal static void NovNajem(Najem x)
+        internal static void NovNajem(NajemView najem)
         {
             using (var db = new PBDB())
             {
-                db.VsiNajemi.Add(x);
+                var najemDb = new Najem();
+                najemDb.Podjetje = db.VsaPodjetja.Find(najem.Podjetje.Id);
+                najemDb.PoslovniProstor = db.VsiPoslovniProstori.Find(najem.Prostor.Id);
+                najemDb.ZacetekNajema = najem.Zacetni;
+                najemDb.KonecNajema = najem.Koncni;
+                db.VsiNajemi.Add(najemDb);
                 db.SaveChanges();
             }
             
@@ -51,6 +56,49 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                     }
                     
                 }
+            }
+        }
+
+        internal static void UrediNajem(NajemView Najem)
+        {
+            using(var db = new PBDB())
+            {
+                var najemDb = db.VsiNajemi.Find(Najem.Id);
+                if(najemDb.Podjetje.PodjetjeId!=Najem.Podjetje.Id)
+                {
+                    najemDb.Podjetje = db.VsaPodjetja.Find(Najem.Podjetje.Id);
+                }
+                if(najemDb.PoslovniProstor.PoslovniProstorID!=Najem.Prostor.Id)
+                {
+                    najemDb.PoslovniProstor = db.VsiPoslovniProstori.Find(Najem.Id);
+                }
+                najemDb.ZacetekNajema = Najem.Zacetni;
+                najemDb.KonecNajema = Najem.Koncni;
+                db.SaveChanges();
+            }
+        }
+
+        internal static ObservableCollection<NajemView> VrniVseNajeme()
+        {
+            var listNajem = new ObservableCollection<NajemView>();
+            using(var db = new PBDB())
+            {
+                foreach(var najem in db.VsiNajemi)
+                {
+                    var najemView = new NajemView(najem);
+                    listNajem.Add(najemView);
+                }
+            }
+            return listNajem;
+        }
+
+        internal static void IzbrisiNajem(NajemView TrenutniNajem)
+        {
+            using (var db = new PBDB())
+            {
+                var najemDb = db.VsiNajemi.Find(TrenutniNajem.Id);
+                db.VsiNajemi.Remove(najemDb);
+                db.SaveChanges();
             }
         }
     }

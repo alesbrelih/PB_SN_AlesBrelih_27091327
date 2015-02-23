@@ -50,7 +50,18 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.SaveChanges();
+            //try
+            //{
+                _viewModel.SaveChanges();
+                this.DialogResult = true;
+                this.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    var errorWindow = new WarningWindow("Prišlo je do napake z povezovanjem do baze!");
+            //    errorWindow.ShowDialog();
+            //}
+            
         }
 
         private void BtnCancel_OnClick(object sender, RoutedEventArgs e)

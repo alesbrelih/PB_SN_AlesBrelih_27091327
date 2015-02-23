@@ -32,24 +32,24 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
 
         internal static void UstvariPodjetje(PodjetjeView Podjetje)
         {
-            try
-            {
+            //try
+            //{
                 using (var db = new PBDB())
                 {
                     db.VsaPodjetja.Add(
                         new Podjetje
                     {
                         ImePodjetja = Podjetje.ImePodjetja,
-                        KontaktnaOseba = new Oseba(Podjetje.KontaktnaOseba)
+                        KontaktnaOseba = db.VseOsebe.Find(Podjetje.KontaktnaOseba.Id)
                     });
                     db.SaveChanges();
-                }
+                //}
             }
-            catch (Exception ex)
-            {
+            //catch (Exception ex)
+            //{
                 
-                throw new Exception("Napaka v povezavi z bazo");
-            }
+            //    throw new Exception("Napaka v povezavi z bazo");
+            //}
             
         }
 
