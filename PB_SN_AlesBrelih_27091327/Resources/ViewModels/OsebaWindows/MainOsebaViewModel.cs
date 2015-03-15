@@ -14,12 +14,20 @@ using XObservableCollection = PB_SN_AlesBrelih_27091327.Resources.Data.TrullyObs
 
 namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows
 {
-    public class MainOsebaViewModel:INotifyPropertyChanged
+    public class MainOsebaViewModel : INotifyPropertyChanged
     {
         private OsebaView _trenutnoPrikazana;
-        
+        private bool _podatkiOsebeOmogoceni = false;
 
-
+        public bool PodatkiOsebeOmogoceni
+        {
+            get { return _podatkiOsebeOmogoceni; }
+            set
+            {
+                _podatkiOsebeOmogoceni = value;
+                RaisePropertyChanged("PodatkiOsebeOmogoceni");
+            }
+        }
         public OsebaView TrenutnoPrikazana
         {
             get
@@ -54,24 +62,30 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.OsebaWindows
 
         internal void SpremeniPrikazanoOsebo(int id)
         {
+            PodatkiOsebeOmogoceni = true;
             TrenutnoPrikazana = VseOsebe.First(x => x.Id == id);
         }
 
-        internal void UrediIzbrano()
+        internal bool UrediIzbrano()
         {
             var urediOsebo = new OsebaManage(TrenutnoPrikazana, Enums.ActionState.Edit);
             urediOsebo.ShowDialog();
+            if(urediOsebo.DialogResult.HasValue&&urediOsebo.DialogResult.Value)
+            {
+                return true;
+            }
+            return false;
         }
 
         internal void IzbrisiIzbrano()
         {
-            
+
         }
 
         internal void IzbrisiIzbrano(System.Windows.Controls.ComboBox CBoxOsebe)
         {
             ManageOsebaDB.IzbrisiOsebo(TrenutnoPrikazana);
-            CBoxOsebe.SelectedIndex = -1;            
+            CBoxOsebe.SelectedIndex = -1;
             VseOsebe.Remove(TrenutnoPrikazana);
             TrenutnoPrikazana = new OsebaView();
         }

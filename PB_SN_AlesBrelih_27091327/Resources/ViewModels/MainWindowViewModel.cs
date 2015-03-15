@@ -70,24 +70,60 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels
 
         internal void PregledNajemov()
         {
-            var pregledNajem = new NajemMain();
+            var pregledNajem = new NajemMain(VsiNajemi);
             pregledNajem.ShowDialog();
-            //if(pregledNajem.DialogResult.HasValue&&pregledNajem.DialogResult.Value)
+            //if (pregledNajem.DialogResult.HasValue && pregledNajem.DialogResult.Value)
             //{
-            //    VsiNajemi = ManageNajemDB.VrniNajemeForMainWindow();
+            //    VsiNajemi.Clear();
+               
             //}
         }
 
         internal void NovNajem()
         {
-            var novNajem = new NajemManage();
+            var novNajem = new NajemManage(VsiNajemi);
             novNajem.ShowDialog();
-            VsiNajemi = ManageNajemDB.VrniVseNajeme();
+
             //if(novNajem.DialogResult.HasValue&&novNajem.DialogResult.Value)
             //{
             //    VsiNajemi = null;
             //    VsiNajemi = ManageNajemDB.VrniNajemeForMainWindow();
             //}
+        }
+
+        internal void PregledPodjetje()
+        {
+            var pregledPodjetje = new PodjetjeMain();
+            pregledPodjetje.ShowDialog();
+            if(pregledPodjetje.DialogResult.HasValue&&pregledPodjetje.DialogResult.Value)
+            {
+                
+                VsiNajemi.Clear();
+                ManageNajemDB.VrniVseNajeme().ToList().ForEach(x=>VsiNajemi.Add(x));
+            }
+        }
+
+        internal void PregledOseb()
+        {
+            var pregledOseba = new OsebaMain();
+            pregledOseba.ShowDialog();
+            if(pregledOseba.DialogResult.HasValue&&pregledOseba.DialogResult.Value)
+            {
+
+                VsiNajemi.Clear();
+                ManageNajemDB.VrniVseNajeme().ToList().ForEach(x => VsiNajemi.Add(x));
+            }
+        }
+
+        internal void PregledProstorov()
+        {
+            var pregledProstorov = new ProstorMain();
+            pregledProstorov.ShowDialog();
+            if(pregledProstorov.DialogResult.HasValue&&pregledProstorov.DialogResult.Value)
+            {
+                VsiNajemi.Clear();
+                ManageNajemDB.VrniVseNajeme().ToList().ForEach(x => VsiNajemi.Add(x));
+            }
         }
     }
 }

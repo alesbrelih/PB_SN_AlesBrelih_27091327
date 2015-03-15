@@ -2,6 +2,7 @@
 using PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,10 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         //ViewModel
         private ManageNajemViewModel _viewModel;
 
-        public NajemManage(NajemView najem = null, ActionState actionState=ActionState.Create)
+        public NajemManage(ObservableCollection<NajemView> vsiNajemi, NajemView najem = null, ActionState actionState=ActionState.Create)
         {
             InitializeComponent();
-            _viewModel = new ManageNajemViewModel(najem, actionState);
+            _viewModel = new ManageNajemViewModel(vsiNajemi, najem, actionState);
             this.DataContext = _viewModel;
             NastaviComboBoxe();
         }

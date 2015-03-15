@@ -1,6 +1,8 @@
-﻿using PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows;
+﻿using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
+using PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +25,11 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private MainNajemViewModel _viewModel;
 
-        public NajemMain()
+        public NajemMain(ObservableCollection<NajemView> vsiNajemi)
         {
             InitializeComponent();
 
-            _viewModel = new MainNajemViewModel();
+            _viewModel = new MainNajemViewModel(vsiNajemi);
             this.DataContext = _viewModel;
 
             NastaviComboBoxe();

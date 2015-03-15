@@ -56,8 +56,7 @@ namespace PB_SN_AlesBrelih_27091327
 
         private void PregledOsebaMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var pregledoseba = new OsebaMain();
-            pregledoseba.ShowDialog();
+            _viewModel.PregledOseb();
         }
 
         private void NovoPodjetjeMenuitem_OnClick(object sender, RoutedEventArgs e)
@@ -68,8 +67,8 @@ namespace PB_SN_AlesBrelih_27091327
 
         private void PregledPodjetjaMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var pregledPodjetje = new PodjetjeMain();
-            pregledPodjetje.ShowDialog();
+            _viewModel.PregledPodjetje();
+            
             
         }
 
@@ -82,13 +81,12 @@ namespace PB_SN_AlesBrelih_27091327
 
         private void PregledNajemMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var pregledProstorov = new ProstorMain();
-            pregledProstorov.Show();
+            
         }
 
         private void NovNajemMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.UstvariProstor();
+            
         }
 
 
@@ -104,5 +102,19 @@ namespace PB_SN_AlesBrelih_27091327
             _viewModel.PregledNajemov();
             
         }
+
+        private void MenuItemPregledProstorov_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.PregledProstorov();
+                
+        }
+
+        private void MenuItemNovProstor_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UstvariProstor();
+        }
+       
+            
+        
     }
 }

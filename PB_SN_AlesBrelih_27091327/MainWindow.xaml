@@ -1,64 +1,67 @@
 ﻿<Window x:Class="PB_SN_AlesBrelih_27091327.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow"
         WindowStyle="None"  MouseDown="MainWindow_OnMouseDown" AllowsTransparency="true"
-        BorderThickness="2" BorderBrush="Black">
+        BorderThickness="2" BorderBrush="Gray" SnapsToDevicePixels="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="200" UseLayoutRounding="True">
     <Window.Resources>
         <ResourceDictionary Source="Resources/Dictionaries/MainLayout.xaml"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="28"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Label Name="lblMainWindowTopBar" Style="{DynamicResource LabelH1Style}" Content="PB_SN"></Label>
+            <Label Name="lblMainWindowTopBar" Style="{DynamicResource LabelH1Style}" Content="Vodenje Najema Poslovnih Prostorov"></Label>
             <WrapPanel FlowDirection="RightToLeft" VerticalAlignment="Center">
-                <Button Name="ExitButton" Style="{DynamicResource WindowStateClose}" Click="ExitButton_OnClick"/>
-                <Button Name="MinimizeButton" Style="{DynamicResource WindowStateMinimize}" Click="MinimizeButton_OnClick"></Button>
+                <Button Name="ExitButton" Style="{DynamicResource WindowStateClose}" Click="ExitButton_OnClick" ToolTip="Zapri Okno"/>
+                <Button Name="MinimizeButton" Style="{DynamicResource WindowStateMinimize}" Click="MinimizeButton_OnClick" ToolTip="Minimiziraj Okno"></Button>
             </WrapPanel>
         </Grid>
-        <Menu Grid.Row="1">
+        <Menu Grid.Row="1" SnapsToDevicePixels="True" Foreground="#FFF7EDED">
+        	<Menu.Background>
+        		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+        			<GradientStop Color="#FF6E2828" Offset="1"/>
+        			<GradientStop Color="#FFDE0202"/>
+        		</LinearGradientBrush>
+        	</Menu.Background>
             
-            <MenuItem Header="_Datoteka">
-                <MenuItem Header="_Export"/>
-                <Separator Background="White"/>
-                <MenuItem Header="_Exit"/>
+            <MenuItem Header="_Datoteka" Foreground="#FFFBF7F7">
+                <!--<MenuItem Header="_Import" ToolTip="Uvoz Podatkov iz CSV" BorderThickness="0,0,0,0" Foreground="DarkRed" Name="MenuItemImport" Click="MenuItemImport_Click"/>
+                <MenuItem Header="_Export" ToolTip="Izvoz v CSV" BorderThickness="0,0,0,0" Foreground="DarkRed" Name="MenuItemExport" Click="MenuItemExport_Click"/>
+                <Separator Background="DarkRed"/>-->
+                <MenuItem Header="_Exit" ToolTip="Izhod Iz Programa" Foreground="DarkRed" />
             </MenuItem>
-            <MenuItem Header="Najem">
-                <MenuItem Header="Pregled" Name="MenuItemPregledNajem" Click="MenuItemPregledNajem_Click"/>
-                <Separator/>
-                <MenuItem Header="Nov" Name="MenuItemNovNajem" Click="MenuItemNovNajem_Click"/>
+            <MenuItem Header="Najem" Foreground="White">
+                <MenuItem Header="Pregled" Name="MenuItemPregledNajem" Click="MenuItemPregledNajem_Click" ToolTip="Pregled Vseh Najemov" Foreground="DarkRed"/>
+                <Separator Background="DarkRed"/>
+                <MenuItem Header="Nov" Name="MenuItemNovNajem" Click="MenuItemNovNajem_Click" ToolTip="Ustvari Nov Najem" Foreground="DarkRed"/>
+            </MenuItem>
+            <MenuItem Header="_Prostori" Foreground="White">
+                <MenuItem Header="_Pregled" Name="MenuItemPregledProstorov" Click="MenuItemPregledProstorov_Click" Foreground="DarkRed" ToolTip="Pregled Vseh Poslovnih Prostorov"/>
+                <Separator Background="DarkRed"/>
+                <MenuItem Header="_Nov" Name="MenuItemNovProstor" Click="MenuItemNovProstor_Click" ToolTip="Ustvari Nov Poslovni Prostor" Foreground="DarkRed"/>
+            </MenuItem>
+            <MenuItem Header="_Podjetja" Foreground="White">
+                <MenuItem Header="_Pregled" Name="PregledPodjetjaMenuItem" Click="PregledPodjetjaMenuItem_OnClick" ToolTip="Pregled Vseh Podjetij" Foreground="DarkRed"/>
+                <Separator Background="DarkRed"/>
+                <MenuItem Header="Dodaj _Novo" Name="NovoPodjetjeMenuitem" Click="NovoPodjetjeMenuitem_OnClick" ToolTip="Ustvari Novo Podjetje" Foreground="DarkRed"/>
+            </MenuItem>
+            <MenuItem Header="_Osebe" Foreground="White">
+                <MenuItem Header="_Pregled" Name="PregledOsebaMenuItem" Click="PregledOsebaMenuItem_OnClick" ToolTip="Pregled Vseh Oseb" Foreground="DarkRed"/>
+                <Separator Background="DarkRed"/>
 
-            </MenuItem>
-            <MenuItem Header="_Prostori">
-                <MenuItem Header="_Pregled" Name="PregledNajemMenuItem" Click="PregledNajemMenuItem_OnClick"/>
-                <Separator Background="White"/>
-                <MenuItem Header="_Nov" Name="NovNajemMenuItem" Click="NovNajemMenuItem_OnClick"/>
-            </MenuItem>
-            <MenuItem Header="_Podjetja">
-                <MenuItem Header="_Pregled" Name="PregledPodjetjaMenuItem" Click="PregledPodjetjaMenuItem_OnClick"/>
-                <Separator Background="White"/>
-
-                <MenuItem Header="Dodaj _Novo" Name="NovoPodjetjeMenuitem" Click="NovoPodjetjeMenuitem_OnClick"/>
-                <MenuItem Header="_Uredi"/>
-                <MenuItem Header="_Izbrisi"/>
-            </MenuItem>
-            <MenuItem Header="_Osebe">
-                <MenuItem Header="_Pregled" Name="PregledOsebaMenuItem" Click="PregledOsebaMenuItem_OnClick"/>
-                <Separator Background="White"/>
-
-                <MenuItem Header="Dodaj _Novo" Name="NovaOsebaMenuItem" Click="NovaOsebaMenuItem_OnClick"/>
-                <MenuItem Header="_Uredi"/>
-                <MenuItem Header="_Izbrisi"/>
-            </MenuItem>
+                <MenuItem Header="Dodaj _Novo" Foreground="DarkRed" Name="NovaOsebaMenuItem" Click="NovaOsebaMenuItem_OnClick" ToolTip="Ustvari Novo Osebo"/>
+               </MenuItem>
         </Menu>
         <Grid Grid.Row="2">
-            <GroupBox Header="Bussiness Overview">
+            <GroupBox Header="    Pregled Poslovanja   ">
                 <DataGrid Name="DataGridMain" ItemsSource="{Binding VsiNajemi, NotifyOnSourceUpdated=True}" AutoGenerateColumns="False">
+                    <DataGrid.Resources>
+                        <!--ADD RED HIGHLIGHT COLOR-->
+                    </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Podjetje.ImePodjetja}" Header="Ime Podjetja" />
                         <DataGridTextColumn Binding="{Binding Podjetje.KontaktnaOseba.Izpis}" Header="Kontaktna Oseba" />
@@ -72,8 +75,6 @@
                 </DataGrid>
             </GroupBox>
         </Grid>
-        <Grid Grid.Row="3">
-            <StatusBar Name="StatusBarMainWindow"/>
-        </Grid>
+
     </Grid>
 </Window>

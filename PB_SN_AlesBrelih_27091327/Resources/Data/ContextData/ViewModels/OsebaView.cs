@@ -10,7 +10,7 @@ using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
 {
-    public class OsebaView:INotifyPropertyChanged
+    public class OsebaView :ViewModel,INotifyPropertyChanged
 
 {
 

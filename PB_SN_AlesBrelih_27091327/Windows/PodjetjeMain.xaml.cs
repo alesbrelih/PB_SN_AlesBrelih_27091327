@@ -78,7 +78,10 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void BtnUrediPodjetje_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.UrediPodjetje();
+            if (_viewModel.UrediPodjetje())
+            {
+                this.DialogResult = true;
+            }
             
             
         }

@@ -10,6 +10,7 @@ using PB_SN_AlesBrelih_27091327.Resources.Data;
 using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels;
 using PB_SN_AlesBrelih_27091327.Resources.ManageDatabase;
 using PB_SN_AlesBrelih_27091327.Windows.MessageWindows;
+using PB_SN_AlesBrelih_27091327.Windows;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 {
@@ -50,9 +51,22 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
         public Enums.ActionState ActionState { get; set; }
         public ComboBox OsebeComboBox { get; set; }
 
-        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, PodjetjeView podjetje, ObservableCollection<OsebaView> vseOsebe,ComboBox cBox)
+        public ManagePodjetjeViewModel(Data.Enums.ActionState Action, ViewModel podjetje, ObservableCollection<OsebaView> vseOsebe,ComboBox cBox)
         {
-            Podjetje = podjetje ?? new PodjetjeView();
+            //PodjetjeView Podjetje;
+            if(podjetje == null)
+            {
+                Podjetje = new PodjetjeView();
+            }
+            else if(podjetje is PodjetjeView)
+            {
+                Podjetje = (podjetje as PodjetjeView);
+            }
+            else
+            {
+                Podjetje = (podjetje as NajemView).Podjetje;
+            }
+            //Podjetje = podjetje ?? new PodjetjeView();
             VseOsebe = vseOsebe==null?ManageOsebaDB.VrniVseOsebe():vseOsebe;
             TrenutnaKontaktna = Podjetje.KontaktnaOseba;
             ActionState = Action;
@@ -99,8 +113,9 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
                 confirmationWindow.ShowDialog();
                 if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
                 {
-                    ManagePodjetjeDB.UrediPodjetje(Podjetje);
                     Podjetje.KontaktnaOseba = TrenutnaKontaktna;
+                    ManagePodjetjeDB.UrediPodjetje(Podjetje);
+                    
                 }
             }
 
@@ -135,6 +150,16 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
             CBoxKontaktnaOseba.SelectedValuePath = "Id";
             if(TrenutnaKontaktna!=null)
                 CBoxKontaktnaOseba.SelectedValue = TrenutnaKontaktna.Id;
+        }
+
+        internal void UrediKontaktnoOsebo()
+        {
+            var urediOsebo = new OsebaManage(TrenutnaKontaktna,Enums.ActionState.Edit );
+            urediOsebo.ShowDialog();
+            if(urediOsebo.DialogResult.HasValue&&urediOsebo.DialogResult.Value)
+            {
+
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.Models;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
 {
-    public class PodjetjeView:INotifyPropertyChanged
+    public class PodjetjeView : ViewModel, INotifyPropertyChanged
     {
 
 

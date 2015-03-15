@@ -60,7 +60,8 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void LblUredi_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.UrediIzbrano();
+            if (_viewModel.UrediIzbrano())
+                DialogResult = true;
 
         }
 

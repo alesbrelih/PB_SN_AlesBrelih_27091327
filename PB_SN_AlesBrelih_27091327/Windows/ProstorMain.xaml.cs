@@ -55,7 +55,8 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void BtnUredi_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.UrediProstor();
+            if (_viewModel.UrediProstor())
+                this.DialogResult = true;
         }
 
         private void BtnIzbrisi_OnClick(object sender, RoutedEventArgs e)
@@ -72,7 +73,7 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         private void CBoxProstori_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(CBoxProstori.SelectedIndex!=-1)
-                _viewModel.NastaviIzbranoPodjetje(int.Parse(CBoxProstori.SelectedValue.ToString()));
+                _viewModel.NastaviIzbraniProstor(int.Parse(CBoxProstori.SelectedValue.ToString()));
         }
     }
 }

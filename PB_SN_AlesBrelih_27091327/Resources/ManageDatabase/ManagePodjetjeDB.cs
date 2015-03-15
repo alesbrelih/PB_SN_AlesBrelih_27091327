@@ -61,7 +61,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ManageDatabase
                 {
                     var izbranoPodjetje = db.VsaPodjetja.Find(Podjetje.Id);
                     izbranoPodjetje.ImePodjetja = Podjetje.ImePodjetja;
-                    izbranoPodjetje.KontaktnaOseba = db.VseOsebe.Find(Podjetje.Id);
+                    izbranoPodjetje.KontaktnaOseba = db.VseOsebe.Find(Podjetje.KontaktnaOseba.Id);
                     db.Entry(izbranoPodjetje).State=EntityState.Modified;
                     
                     db.SaveChanges();

@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
 {
-    public class NajemView : INotifyPropertyChanged
+    public class NajemView : ViewModel, INotifyPropertyChanged
     {
         #region privates
         private PodjetjeView _podjetje;
@@ -35,6 +35,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.Data.ContextData.ViewModels
             get { return _prostor; }
             set { _prostor = value;
             RaisePropertyChanged("Prostor");
+            RaisePropertyChanged("Izpis");
             }
         }
         public DateTime Zacetni

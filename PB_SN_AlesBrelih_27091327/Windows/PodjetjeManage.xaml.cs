@@ -24,7 +24,7 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     public partial class PodjetjeManage : Window
     {
         private ManagePodjetjeViewModel _viewModel;
-        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, PodjetjeView podjetje=null, ObservableCollection<OsebaView> vseOsebe = null,ComboBox cBox=null)
+        public PodjetjeManage(Enums.ActionState Action=Enums.ActionState.Create, ViewModel podjetje=null, ObservableCollection<OsebaView> vseOsebe = null,ComboBox cBox=null)
         {
             InitializeComponent();
             _viewModel = new ManagePodjetjeViewModel(Action,podjetje,vseOsebe,cBox);
@@ -65,13 +65,19 @@ namespace PB_SN_AlesBrelih_27091327.Windows
         {
             _viewModel.SaveChanges();
             this.DialogResult = true;
-            this.Close();
+
 
         }
 
         private void CBoxKontaktnaOseba_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _viewModel.SpremeniIzbranoKontaktno(CBoxKontaktnaOseba.SelectedIndex);
+        }
+
+        private void BtnUrediOsebo_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.UrediKontaktnoOsebo();
+            
         }
     }
 }

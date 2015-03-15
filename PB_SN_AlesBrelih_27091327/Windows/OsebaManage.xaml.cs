@@ -24,14 +24,14 @@ namespace PB_SN_AlesBrelih_27091327.Windows
     public partial class OsebaManage : Window
     {
         private ManageOsebaViewModel _viewModel;
-        public OsebaManage(OsebaView oseba = null, Enums.ActionState Action=Enums.ActionState.Create ) //TODO: osebaview model in constructor
+        public OsebaManage(OsebaView oseba = null, Enums.ActionState Action = Enums.ActionState.Create) //TODO: osebaview model in constructor
         {
             InitializeComponent();
-            _viewModel = new ManageOsebaViewModel(this,oseba,Action);
+            _viewModel = new ManageOsebaViewModel(this, oseba, Action);
             this.DataContext = _viewModel;
         }
 
-        
+
 
         private void OsebaManage_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -50,18 +50,9 @@ namespace PB_SN_AlesBrelih_27091327.Windows
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-                _viewModel.SaveChanges();
-                this.DialogResult = true;
-                this.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var errorWindow = new WarningWindow("Prišlo je do napake z povezovanjem do baze!");
-            //    errorWindow.ShowDialog();
-            //}
-            
+            _viewModel.SaveChanges();
+            this.DialogResult = true;
+            this.Close();
         }
 
         private void BtnCancel_OnClick(object sender, RoutedEventArgs e)

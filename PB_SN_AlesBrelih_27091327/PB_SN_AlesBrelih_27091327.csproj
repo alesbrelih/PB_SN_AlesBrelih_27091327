@@ -90,6 +90,7 @@
     <Compile Include="Resources\Data\ContextData\ViewModels\OsebaView.cs" />
     <Compile Include="Resources\Data\ContextData\ViewModels\PodjetjeView.cs" />
     <Compile Include="Resources\Data\ContextData\ViewModels\ProstorView.cs" />
+    <Compile Include="Resources\Data\ContextData\ViewModels\ViewModel.cs" />
     <Compile Include="Resources\Data\CustomTypes.cs" />
     <Compile Include="Resources\Data\Enums.cs" />
     <Compile Include="Resources\ManageDatabase\ManageNajemDB.cs" />

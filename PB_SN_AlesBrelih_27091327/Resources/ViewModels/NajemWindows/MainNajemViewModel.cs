@@ -17,9 +17,20 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
     {
         #region privates
         private NajemView _trenutni;
-
+        private bool _podatkiNajemaOmogoceni = false;
         #endregion
+
+
         #region props
+        public bool PodatkiNajemaOmogoceni
+        {
+            get { return _podatkiNajemaOmogoceni; }
+            set
+            {
+                _podatkiNajemaOmogoceni = value;
+                RaisePropertyChanged("PodatkiNajemaOmogoceni");
+            }
+        }
         public ObservableCollection<NajemView> VsiNajemi { get; set; }
         public NajemView TrenutniNajem
         {
@@ -35,9 +46,9 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
         #endregion
 
         #region constructor
-        public MainNajemViewModel()
+        public MainNajemViewModel(ObservableCollection<NajemView> vsiNajemi)
         {
-            VsiNajemi = ManageNajemDB.VrniVseNajeme();
+            VsiNajemi = vsiNajemi;
         }
         #endregion
 
@@ -60,25 +71,26 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
             // p - selected combobbox najem index
             if (p != -1)
             {
+                PodatkiNajemaOmogoceni = true;
                 TrenutniNajem = VsiNajemi[p];
             }
         }
 
         internal void UrediProstor()
         {
-            var urediProstor = new ProstorManage(TrenutniNajem.Prostor,ActionState.Edit);
+            var urediProstor = new ProstorManage(TrenutniNajem.Prostor, ActionState.Edit);
             urediProstor.ShowDialog();
         }
 
         internal void UrediPodjetje()
         {
-            var urediPodjetje = new PodjetjeManage(ActionState.Edit, TrenutniNajem.Podjetje);
+            var urediPodjetje = new PodjetjeManage(ActionState.Edit, TrenutniNajem);
             urediPodjetje.ShowDialog();
         }
 
         internal void UrediTrenutniNajem()
         {
-            var urediNajem = new NajemManage(TrenutniNajem, ActionState.Edit);
+            var urediNajem = new NajemManage(VsiNajemi,TrenutniNajem, ActionState.Edit);
             urediNajem.ShowDialog();
         }
 
@@ -86,9 +98,9 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
         {
             var confirmationWindow = new DialogWindows("Želite izbrisati izbrani najem?");
             confirmationWindow.ShowDialog();
-            if(confirmationWindow.DialogResult.HasValue&&confirmationWindow.DialogResult.Value)
+            if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
             {
-                
+
                 ManageNajemDB.IzbrisiNajem(TrenutniNajem);
                 CBoxNajemi.SelectedIndex = -1;
                 VsiNajemi.Remove(TrenutniNajem);

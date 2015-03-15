@@ -19,6 +19,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
     {
         #region privates
         private NajemView _najem;
+        private ObservableCollection<NajemView> _vsiNajemi { get; set; }
         #endregion
         #region props
         public ObservableCollection<ProstorView> VsiProstori { get; set; }
@@ -32,10 +33,19 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
                 RaisePropertyChanged("Najem");
             }
         }
+        public ObservableCollection<NajemView> VsiNajemi
+        {
+            get { return _vsiNajemi; }
+            set
+            {
+                _vsiNajemi = value;
+                RaisePropertyChanged("VsiNajemi");
+            }
+        }
         public ActionState ActionState { get; set; }
         #endregion
 
-        public ManageNajemViewModel(NajemView najem = null, ActionState actionState = ActionState.Create)
+        public ManageNajemViewModel(ObservableCollection<NajemView> vsiNajemi, NajemView najem = null, ActionState actionState = ActionState.Create)
         {
             if (najem == null)
             {
@@ -43,6 +53,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
             }
             else
                 Najem = najem;
+            VsiNajemi = vsiNajemi;
             ActionState = actionState;
             VsaPodjetja = ManagePodjetjeDB.VrniVsaPodjetja();
             VsiProstori = ManageProstorDB.VrniVseProstore();
@@ -73,6 +84,8 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.NajemWindows
                 if (confirmationWindow.DialogResult.HasValue && confirmationWindow.DialogResult.Value)
                 {
                     ManageNajemDB.NovNajem(Najem);
+                    var sezNajemov = ManageNajemDB.VrniVseNajeme();
+                    VsiNajemi.Add(sezNajemov.Last());
                 }
             }
             if(ActionState == ActionState.Edit)

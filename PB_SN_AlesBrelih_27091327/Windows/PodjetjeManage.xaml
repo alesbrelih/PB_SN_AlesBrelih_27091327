@@ -1,31 +1,30 @@
 ﻿<Window x:Class="PB_SN_AlesBrelih_27091327.Windows.PodjetjeManage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PodjetjeManage" Height="662.5" Width="384.723"
+        Title="PodjetjeManage"
+        WindowStartupLocation="CenterOwner"
         WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip"
-        MouseDown="PodjetjeManage_OnMouseDown">
+        MouseDown="PodjetjeManage_OnMouseDown"
+        BorderThickness="2" BorderBrush="Gray" SizeToContent="WidthAndHeight" MinWidth="350" UseLayoutRounding="True" SnapsToDevicePixels="True">
     <Window.Resources>
         <ResourceDictionary Source="../Resources/Dictionaries/MainLayout.xaml"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="28"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid Row="0">
             <Label HorizontalAlignment="Left" Name="LblPodjetjeManageMain" Style="{DynamicResource LabelH1Style}" Content="PB-SN-ManagePodjetje"/>
             <WrapPanel FlowDirection="RightToLeft" VerticalAlignment="Center">
-                <Button Name="BtnClose" Click="BtnClose_OnClick" Style="{DynamicResource WindowStateClose}"/>
-                <Button Name="BtnMinimize" Click="BtnMinimize_OnClick" Style="{DynamicResource WindowStateMinimize}"></Button>
+                <Button Name="BtnClose" Click="BtnClose_OnClick" Style="{DynamicResource WindowStateClose}" ToolTip="Zapri Okno"/>
+                <Button Name="BtnMinimize" Click="BtnMinimize_OnClick" Style="{DynamicResource WindowStateMinimize}" ToolTip="Minimiziraj Okno"></Button>
             </WrapPanel>
         </Grid>
-        <Grid Grid.Row="1" Background="Red"></Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <GroupBox Header="Podatki o podjetju">
                 <Grid>
@@ -40,10 +39,10 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Label Name="LblImePodjetja" Style="{DynamicResource LabelManageOsebaInfo}" Content="Ime Podjetja"/>
-                    <TextBox Grid.Column="1" Name="TBoxImePodjetja" Text="{Binding Podjetje.ImePodjetja}"/>
+                    <TextBox Grid.Column="1" Name="TBoxImePodjetja" Text="{Binding Podjetje.ImePodjetja}" ToolTip="Ime Podjetja"/>
 
                     <Label Grid.Row="1" Name="LblKontaktnaOseba" Content="Kontaktna Oseba" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                    <ComboBox Grid.Row="1" Grid.Column="1" Name="CBoxKontaktnaOseba" ItemsSource="{Binding VseOsebe}" SelectionChanged="CBoxKontaktnaOseba_SelectionChanged"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="CBoxKontaktnaOseba" ItemsSource="{Binding VseOsebe}" SelectionChanged="CBoxKontaktnaOseba_SelectionChanged" ToolTip="Izbor Kontaktne Osebe"/>
                 
                     <Grid Grid.Row="2" ColumnSpan="2">
                         <GroupBox Name="GBoxOsebniPodatki" Header="Kontaktna Oseba">
@@ -53,23 +52,27 @@
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1"/>
+                                    <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Name="LblImeOseba" Content="Ime" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <TextBox Grid.Column="1" Text="{Binding TrenutnaKontaktna.Ime}"/>
+                                <Label Grid.Column="1" Content="{Binding TrenutnaKontaktna.Ime}"/>
                                 
                                 <Label Grid.Row="1" Name="LblPriimekOseba" Content="Priimek" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <TextBox Grid.Row="1"  Grid.Column="2" Text="{Binding TrenutnaKontaktna.Priimek}"/>
+                                <Label Grid.Row="1"  Grid.Column="2" Content="{Binding TrenutnaKontaktna.Priimek}"/>
                                 
                                 <Label Grid.Row="2" Name="LblEmailOseba" Content="E-mail" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <TextBox Grid.Row="2"  Grid.Column="2" Text="{Binding TrenutnaKontaktna.EMail}"/>
+                                <Label Grid.Row="2"  Grid.Column="2" Content="{Binding TrenutnaKontaktna.EMail}"/>
 
                                 <Label Grid.Row="3" Name="LblTelefonOseba" Content="Telefon" Style="{DynamicResource LabelManageOsebaInfo}"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TrenutnaKontaktna.Telephone}"/>
+                                <Label Grid.Row="3" Grid.Column="1" Content="{Binding TrenutnaKontaktna.Telephone}"/>
                                 
+                                
+                                <Button Grid.Row="5" Background="Gray" Content="Uredi" Name="BtnUrediOsebo" Click="BtnUrediOsebo_Click"/>
                             </Grid>
                         </GroupBox>
                     </Grid>
@@ -80,8 +83,8 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="BtnSave" Content="Shrani in Izhod" Click="BtnSave_OnClick"/>
-                <Button Grid.Column="1" Content="Preklici"/>
+                <Button Name="BtnSave" Content="Shrani in Izhod" Click="BtnSave_OnClick" ToolTip="Shrani in Izhod"/>
+                <Button Grid.Column="1" Content="Prekliči" ToolTip="Prekliči vse vnose na tem oknu."/>
             </Grid>
 
         </Grid>

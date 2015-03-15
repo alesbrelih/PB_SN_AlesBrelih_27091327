@@ -17,10 +17,17 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
     public class MainPodjetjeViewModel:INotifyPropertyChanged
     {
 
-
+        #region privates
         private PodjetjeView _trenutnoPodjetje;
         private OsebaView _trenutnaKontaktna;
+        private bool _podatkiPodjetjaOmogoceni = false;
+        #endregion
 
+        #region props
+        public bool PodatkiPodjetjaOmogoceni { get { return _podatkiPodjetjaOmogoceni; } set { _podatkiPodjetjaOmogoceni = value;
+        RaisePropertyChanged("PodatkiPodjetjaOmogoceni");
+        }
+        }
         public PodjetjeView IzbranoPodjetje
         {
             get
@@ -49,12 +56,15 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
         public ObservableCollection<PodjetjeView> VsaPodjetja { get; set; }
         public ObservableCollection<OsebaView> VseOsebe { get; set; }
 
+        #endregion
+
 
         public MainPodjetjeViewModel()
         {
             VsaPodjetja = ManagePodjetjeDB.VrniVsaPodjetja();
             VseOsebe = ManageOsebaDB.VrniVseOsebe();
         }
+
 
         #region inotify
         private void RaisePropertyChanged(string propertyName)
@@ -71,6 +81,7 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
         internal void NastaviIzbranoPodjetje(int p)
         {
+            PodatkiPodjetjaOmogoceni = true;
             IzbranoPodjetje = VsaPodjetja.First(x => x.Id == p);
             TrenutnaKontaktna = IzbranoPodjetje.KontaktnaOseba;
         }
@@ -88,16 +99,17 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.PodjetjeWindows
 
         }
 
-        internal void UrediPodjetje()
+        internal bool UrediPodjetje()
         {
             var urediPodjetje = new PodjetjeManage(Enums.ActionState.Edit, IzbranoPodjetje, VseOsebe);
             urediPodjetje.ShowDialog();
 
             if (urediPodjetje.DialogResult.HasValue && urediPodjetje.DialogResult.Value)
             {
-                //SHRANI IN PREVERI ALI...BACKUP NRD
+                return true;
             }
             TrenutnaKontaktna = IzbranoPodjetje.KontaktnaOseba;
+            return false;
         }
 
         internal void IzbrisiPodjetje(ComboBox cBox)

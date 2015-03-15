@@ -19,10 +19,21 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
         #region privates
 
         private ProstorView _prostor;
+        private bool _podatkiProstoraOmogoceni = false;
 
         #endregion
 
         #region props
+        public bool PodatkiProstoraOmogoceni
+        {
+            get { return _podatkiProstoraOmogoceni; }
+            set
+            {
+                _podatkiProstoraOmogoceni = value;
+                RaisePropertyChanged("PodatkiProstoraOmogoceni");
+            }
+        }
+
 
         public ProstorView IzbraniProstor
         {
@@ -65,15 +76,21 @@ namespace PB_SN_AlesBrelih_27091327.Resources.ViewModels.ProstorWindows
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
-        internal void NastaviIzbranoPodjetje(int idProstora)
+        internal void NastaviIzbraniProstor(int idProstora)
         {
+            PodatkiProstoraOmogoceni = true;
             IzbraniProstor = VsiProstori.First(prostor => prostor.Id == idProstora);
         }
 
-        internal void UrediProstor()
+        internal bool UrediProstor()
         {
             var urediProstor = new ProstorManage(IzbraniProstor,Enums.ActionState.Edit);
             urediProstor.ShowDialog();
+            if(urediProstor.DialogResult.HasValue&&urediProstor.DialogResult.Value)
+            {
+                return true;
+            }
+            return false;
         }
 
         internal void IzbrisiProstor(ref ComboBox cBox)
